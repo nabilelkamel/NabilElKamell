@@ -265,10 +265,6 @@ document.addEventListener("DOMContentLoaded", () => {
         : "I am AI / ST, the assistant for Nabil El Kamel's website. Nabil is from Oujda, Morocco, and is interested in programming, networking.";
     }
 
-    return aiLanguage === "ar"
-      ? "جرّب تسولني على نبيل أو المشاريع أو البرمجة أو الشبكات أو الأمن السيبراني."
-      : "Ask me about Nabil, projects, programming, networking, or cybersecurity.";
-  }
 
   aiForm.addEventListener("submit", (event) => {
     event.preventDefault();
