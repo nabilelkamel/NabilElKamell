@@ -80,14 +80,15 @@ try {
 
 });
 
-// ===== ANIMATED TYPING =====
+
+ // ===== ANIMATED TYPING =====
 
 const typedText = document.getElementById("typedText");
 
 const roles = [
-"Web Development",
-"Networking",
-"Software Development"
+    "Web Development",
+    "Networking",
+    "Software Development"
 ];
 
 let roleIndex = 0;
@@ -95,35 +96,36 @@ let charIndex = 0;
 let deleting = false;
 
 function typeRole() {
-if (!typedText) return;
+    if (!typedText) return;
 
-const currentRole = roles[roleIndex];  
+    const currentRole = roles[roleIndex];
 
-if (deleting) {  
-    charIndex--;  
-} else {  
-    charIndex++;  
-}  
+    if (deleting) {
+        charIndex--;
+    } else {
+        charIndex++;
+    }
 
-typedText.textContent = currentRole.substring(0, charIndex);  
+    typedText.textContent = currentRole.substring(0, charIndex);
 
-let delay = deleting ? 45 : 90;  
+    let delay = deleting ? 45 : 90;
 
-if (!deleting && charIndex === currentRole.length) {  
-    deleting = true;  
-    delay = 1300;  
-} else if (deleting && charIndex === 0) {  
-    deleting = false;  
-    roleIndex = (roleIndex + 1) % roles.length;  
-    delay = 350;  
-}  
+    if (!deleting && charIndex === currentRole.length) {
+        deleting = true;
+        delay = 1300;
+    } else if (deleting && charIndex === 0) {
+        deleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        delay = 350;
+    }
 
-setTimeout(typeRole, delay);
-
+    setTimeout(typeRole, delay);
 }
 
 if (typedText) {
-typeRole();
+    typeRole();
+}
+
 }
 
 // ===== REVEAL SECTIONS ON SCROLL =====
