@@ -86,9 +86,8 @@ const typedText = document.getElementById("typedText");
 
 const roles = [
 "Web Development",
-"software development"
 "Networking",
-    
+"Cybersecurity"
 ];
 
 let roleIndex = 0;
@@ -252,19 +251,34 @@ document.addEventListener("DOMContentLoaded", () => {
         : "Networking connects devices to exchange data. Learn IP, DNS, DHCP, TCP/IP, LAN, and WAN.";
     }
 
-    if (includesAny(["program", "javascript", "html", "css", "برمجة", "البرمجة"])) {
+    if (includesAny(["cyber", "hack", "security", "الأمن السيبراني", "الأمن"])) {
       return aiLanguage === "ar"
-        ? "يمكنك تعلّم HTML وCSS وJavaScript لتطوير المواقع، أو  لأساسيات البرمجة."
-        : "Learn HTML, CSS, and JavaScript for web development, o for programming fundamentals.";
+        ? "الأمن السيبراني يحمي الأنظمة والشبكات والبيانات. ابدأ بأساسيات الشبكات وLinux والتدريب القانوني."
+        : "Cybersecurity protects systems, networks, and data. Start with networking, Linux, and legal practice.";
     }
 
+    if (includesAny(["program", "python", "javascript", "html", "css", "برمجة", "البرمجة"])) {
+      return aiLanguage === "ar"
+        ? "يمكنك تعلّم HTML وCSS وJavaScript لتطوير المواقع، أو Python لأساسيات البرمجة."
+        : "Learn HTML, CSS, and JavaScript for web development, or Python for programming fundamentals.";
+    }
+
+    if (includesAny(["robot", "روبوت", "الروبوتات"])) {
+      return aiLanguage === "ar"
+        ? "الروبوتات تجمع بين البرمجة والإلكترونيات وأجهزة الاستشعار."
+        : "Robotics combines programming, electronics, and sensors.";
+    }
 
     if (includesAny(["nabil", "نبيل", "about", "من أنت", "من هو"])) {
       return aiLanguage === "ar"
-        ? "أنا AI / ST، مساعد موقع نبيل الكاملي من وجدة، المغرب. يهتم نبيل بالبرمجة والشبكات  ."
-        : "I am AI / ST, the assistant for Nabil El Kamel's website. Nabil is from Oujda, Morocco, and is interested in programming, networking.";
+        ? "أنا AI / ST، مساعد موقع نبيل الكاملي من وجدة، المغرب. يهتم نبيل بالبرمجة والشبكات والأمن السيبراني والروبوتات."
+        : "I am AI / ST, the assistant for Nabil El Kamel's website. Nabil is from Oujda, Morocco, and is interested in programming, networking, cybersecurity, and robotics.";
     }
 
+    return aiLanguage === "ar"
+      ? "جرّب تسولني على نبيل أو المشاريع أو البرمجة أو الشبكات أو الأمن السيبراني."
+      : "Ask me about Nabil, projects, programming, networking, or cybersecurity.";
+  }
 
   aiForm.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -278,12 +292,4 @@ document.addEventListener("DOMContentLoaded", () => {
     aiInput.value = "";
     aiInput.focus();
   });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll(".stars .star").forEach(star => {
-        star.addEventListener("click", () => {
-            star.classList.toggle("active");
-        });
-    });
 });
