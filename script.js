@@ -251,23 +251,17 @@ document.addEventListener("DOMContentLoaded", () => {
         : "Networking connects devices to exchange data. Learn IP, DNS, DHCP, TCP/IP, LAN, and WAN.";
     }
 
-    if (includesAny(["cyber", "hack", "security", "الأمن السيبراني", "الأمن"])) {
+    if (includesAny(["program", "javascript", "html", "css", "برمجة", "البرمجة"])) {
       return aiLanguage === "ar"
-        ? "الأمن السيبراني يحمي الأنظمة والشبكات والبيانات. ابدأ بأساسيات الشبكات وLinux والتدريب القانوني."
-        : "Cybersecurity protects systems, networks, and data. Start with networking, Linux, and legal practice.";
-    }
-
-    if (includesAny(["program", "python", "javascript", "html", "css", "برمجة", "البرمجة"])) {
-      return aiLanguage === "ar"
-        ? "يمكنك تعلّم HTML وCSS وJavaScript لتطوير المواقع، أو Python لأساسيات البرمجة."
-        : "Learn HTML, CSS, and JavaScript for web development, or Python for programming fundamentals.";
+        ? "يمكنك تعلّم HTML وCSS وJavaScript لتطوير المواقع، أو  لأساسيات البرمجة."
+        : "Learn HTML, CSS, and JavaScript for web development, o for programming fundamentals.";
     }
 
 
     if (includesAny(["nabil", "نبيل", "about", "من أنت", "من هو"])) {
       return aiLanguage === "ar"
-        ? "أنا AI / ST، مساعد موقع نبيل الكاملي من وجدة، المغرب. يهتم نبيل بالبرمجة والشبكات والأمن السيبراني ."
-        : "I am AI / ST, the assistant for Nabil El Kamel's website. Nabil is from Oujda, Morocco, and is interested in programming, networking, and cybersecurity.";
+        ? "أنا AI / ST، مساعد موقع نبيل الكاملي من وجدة، المغرب. يهتم نبيل بالبرمجة والشبكات  ."
+        : "I am AI / ST, the assistant for Nabil El Kamel's website. Nabil is from Oujda, Morocco, and is interested in programming, networking.";
     }
 
     return aiLanguage === "ar"
