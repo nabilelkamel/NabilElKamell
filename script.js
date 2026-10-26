@@ -88,6 +88,7 @@ const roles = [
 "Web Development",
 "software development"
 "Networking"
+    
 ];
 
 let roleIndex = 0;
