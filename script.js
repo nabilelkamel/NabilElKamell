@@ -86,8 +86,8 @@ const typedText = document.getElementById("typedText");
 
 const roles = [
 "Web Development",
-"Networking",
-"Cybersecurity"
+"software development"
+"Networking"
 ];
 
 let roleIndex = 0;
