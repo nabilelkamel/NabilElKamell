@@ -173,121 +173,80 @@ for (let i = 0; i < 4; i++) {
 }
 
 })();
+// ===== ST AI BOT =====
 
-// ===== REAL AI / ST ASSISTANT =====
+const aiMessages = document.getElementById("ai-messages");
+const aiForm = document.getElementById("ai-form");
+const aiInput = document.getElementById("ai-input");
 
-document.addEventListener("DOMContentLoaded", () => {
-    const aiBox = document.getElementById("ai-box");
-    const aiMessages = document.getElementById("ai-messages");
-    const aiInput = document.getElementById("ai-input");
-    const aiForm = document.getElementById("ai-form");
+function addMessage(text, type = "bot") {
+    const message = document.createElement("div");
+    message.className = type === "user" ? "ai-user" : "ai-bot";
+    message.textContent = text;
+    aiMessages.appendChild(message);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+}
 
-    const toggle = document.getElementById("ai-toggle");
-    const close = document.getElementById("ai-close");
-    const arabic = document.getElementById("ai-ar");
-    const english = document.getElementById("ai-en");
+function addSearchLink(query) {
+    const link = document.createElement("a");
+    link.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.textContent = "🔎 Search the web";
+    link.style.display = "block";
+    link.style.margin = "10px";
+    aiMessages.appendChild(link);
+}
 
-    // حط هنا رابط الخادم ديالك من بعد
-    const AI_API_URL = "https://YOUR-WORKER.workers.dev/chat";
+function getSTResponse(question) {
+    const q = question.toLowerCase();
 
-    let aiLanguage = "en";
-    let chatHistory = [];
-
-    if (!aiBox || !aiMessages || !aiInput || !aiForm) {
-        console.error("ST AI: Chat elements not found.");
-        return;
+    if (/^(hi|hello|hey|salam|سلام|مرحبا)/i.test(q)) {
+        return "Hello! Welcome to ST AI. How can I help you today?";
     }
 
-    toggle?.addEventListener("click", () => {
-        aiBox.hidden = !aiBox.hidden;
-        if (!aiBox.hidden) aiInput.focus();
-    });
-
-    close?.addEventListener("click", () => {
-        aiBox.hidden = true;
-    });
-
-    arabic?.addEventListener("click", () => {
-        aiLanguage = "ar";
-        aiInput.placeholder = "اسأل عن نبيل أو التكنولوجيا...";
-    });
-
-    english?.addEventListener("click", () => {
-        aiLanguage = "en";
-        aiInput.placeholder = "Ask about Nabil or technology...";
-    });
-
-    function addAIMessage(text, type) {
-        const message = document.createElement("p");
-        message.className = type;
-        message.textContent = text;
-        aiMessages.appendChild(message);
-        aiMessages.scrollTop = aiMessages.scrollHeight;
-        return message;
+    if (q.includes("who are you") || q.includes("chkon nta")) {
+        return "I am ST AI, your digital assistant. Ask me about different topics!";
     }
 
-    async function askSTAI(question) {
-        const languageInstruction = aiLanguage === "ar"
-            ? "Reply in clear Arabic or Moroccan Darija."
-            : "Reply in clear, friendly English.";
-
-        const response = await fetch(AI_API_URL, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message: question,
-                languageInstruction,
-                history: chatHistory.slice(-10)
-            })
-        });
-
-        const data = await response.json();
-
-        if (!response.ok) {
-            throw new Error(data.error || "Connection error");
-        }
-
-        if (!data.reply) {
-            throw new Error("Empty AI response");
-        }
-
-        return data.reply;
+    if (q.includes("programming") || q.includes("python") || q.includes("html")) {
+        return "You can learn programming through free tutorials and practical exercises.";
     }
 
-    aiForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
+    if (q.includes("cybersecurity") || q.includes("cyber security")) {
+        return "Cybersecurity is the practice of protecting systems, networks and information.";
+    }
 
-        const question = aiInput.value.trim();
-        if (!question) return;
+    if (q.includes("science") || q.includes("physics")) {
+        return "Science helps us understand the world through observation and experiments.";
+    }
 
-        addAIMessage(question, "ai-user");
-        aiInput.value = "";
-        aiInput.disabled = true;
+    if (q.includes("thank") || q.includes("شكرا")) {
+        return "You're welcome! I'm here to help.";
+    }
 
-        const loading = addAIMessage(
-            aiLanguage === "ar" ? "ST AI كيفكر..." : "ST AI is thinking...",
-            "ai-bot"
-        );
+    return "I don't have a reliable answer stored for this question. You can search the web for more information:";
+}
 
-        try {
-            const answer = await askSTAI(question);
-            loading.textContent = answer;
+aiForm.addEventListener("submit", function(e) {
+    e.preventDefault();
 
-            chatHistory.push(
-                { role: "user", parts: [{ text: question }] },
-                { role: "model", parts: [{ text: answer }] }
-            );
+    const question = aiInput.value.trim();
+    if (!question) return;
 
-            chatHistory = chatHistory.slice(-10);
+    addMessage(question, "user");
 
-        } catch (error) {
-            console.error("ST AI:", error);
-            loading.textContent = "ST AI could not connect. Check the server setup.";
-        } finally {
-            aiInput.disabled = false;
-            aiInput.focus();
-        }
-    });
+    const answer = getSTResponse(question);
+    addMessage(answer, "bot");
+
+    if (answer.startsWith("I don't have")) {
+        addSearchLink(question);
+    }
+
+    aiInput.value = "";
 });
+
+// Welcome message
+if (aiMessages && aiMessages.children.length === 0) {
+    addMessage("Welcome to ST AI! Ask me anything.");
+}
