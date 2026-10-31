@@ -174,122 +174,120 @@ for (let i = 0; i < 4; i++) {
 
 })();
 
+// ===== REAL AI / ST ASSISTANT =====
+
 document.addEventListener("DOMContentLoaded", () => {
-  const aiBox = document.getElementById("ai-box");
-  const aiMessages = document.getElementById("ai-messages");
-  const aiInput = document.getElementById("ai-input");
-  const aiForm = document.getElementById("ai-form");
+    const aiBox = document.getElementById("ai-box");
+    const aiMessages = document.getElementById("ai-messages");
+    const aiInput = document.getElementById("ai-input");
+    const aiForm = document.getElementById("ai-form");
 
-  const toggle = document.getElementById("ai-toggle");
-  const close = document.getElementById("ai-close");
-  const arabic = document.getElementById("ai-ar");
-  const english = document.getElementById("ai-en");
+    const toggle = document.getElementById("ai-toggle");
+    const close = document.getElementById("ai-close");
+    const arabic = document.getElementById("ai-ar");
+    const english = document.getElementById("ai-en");
 
-  let aiLanguage = "en";
+    // حط هنا رابط الخادم ديالك من بعد
+    const AI_API_URL = "https://YOUR-WORKER.workers.dev/chat";
 
-  if (!aiBox || !aiMessages || !aiInput || !aiForm) {
-    console.error("AI error: Check ai-box, ai-messages, ai-input and ai-form IDs.");
-    return;
-  }
+    let aiLanguage = "en";
+    let chatHistory = [];
 
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      aiBox.hidden = !aiBox.hidden;
-      if (!aiBox.hidden) aiInput.focus();
+    if (!aiBox || !aiMessages || !aiInput || !aiForm) {
+        console.error("ST AI: Chat elements not found.");
+        return;
+    }
+
+    toggle?.addEventListener("click", () => {
+        aiBox.hidden = !aiBox.hidden;
+        if (!aiBox.hidden) aiInput.focus();
     });
-  }
 
-  if (close) {
-    close.addEventListener("click", () => {
-      aiBox.hidden = true;
+    close?.addEventListener("click", () => {
+        aiBox.hidden = true;
     });
-  }
 
-  if (arabic) {
-    arabic.addEventListener("click", () => {
-      aiLanguage = "ar";
-      aiInput.placeholder = "اسأل عن نبيل أو التكنولوجيا...";
+    arabic?.addEventListener("click", () => {
+        aiLanguage = "ar";
+        aiInput.placeholder = "اسأل عن نبيل أو التكنولوجيا...";
     });
-  }
 
-  if (english) {
-    english.addEventListener("click", () => {
-      aiLanguage = "en";
-      aiInput.placeholder = "Ask about Nabil or technology...";
+    english?.addEventListener("click", () => {
+        aiLanguage = "en";
+        aiInput.placeholder = "Ask about Nabil or technology...";
     });
-  }
 
-  function addAIMessage(text, type) {
-    const message = document.createElement("p");
-    message.className = type;
-    message.textContent = text;
-    aiMessages.appendChild(message);
-    aiMessages.scrollTop = aiMessages.scrollHeight;
-  }
-
-  function getAIAnswer(question) {
-    const q = question.toLowerCase();
-
-    const includesAny = (words) =>
-      words.some(word => q.includes(word));
-
-    if (includesAny(["hello", "hi", "salam", "سلام", "مرحبا", "bonjour"])) {
-      return aiLanguage === "ar"
-        ? "مرحباً بك! أنا AI / ST، مساعد موقع نبيل. كيف يمكنني مساعدتك؟"
-        : "Hello! Welcome to Nabil's website. How can I help you?";
+    function addAIMessage(text, type) {
+        const message = document.createElement("p");
+        message.className = type;
+        message.textContent = text;
+        aiMessages.appendChild(message);
+        aiMessages.scrollTop = aiMessages.scrollHeight;
+        return message;
     }
 
-    if (includesAny(["project", "projet", "مشروع", "github"])) {
-      return aiLanguage === "ar"
-        ? "نبيل مهتم بالمشاريع التقنية. اكتشف أعماله على GitHub: https://github.com/elknabil795-ops"
-        : "Nabil is interested in technology projects. Explore his GitHub: https://github.com/elknabil795-ops";
+    async function askSTAI(question) {
+        const languageInstruction = aiLanguage === "ar"
+            ? "Reply in clear Arabic or Moroccan Darija."
+            : "Reply in clear, friendly English.";
+
+        const response = await fetch(AI_API_URL, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: question,
+                languageInstruction,
+                history: chatHistory.slice(-10)
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || "Connection error");
+        }
+
+        if (!data.reply) {
+            throw new Error("Empty AI response");
+        }
+
+        return data.reply;
     }
 
-    if (includesAny(["network", "شبكات", "الشبكات", "tcp/ip", "dns"])) {
-      return aiLanguage === "ar"
-        ? "الشبكات تربط الأجهزة لتبادل البيانات. تعلّم IP وDNS وDHCP وTCP/IP وLAN وWAN."
-        : "Networking connects devices to exchange data. Learn IP, DNS, DHCP, TCP/IP, LAN, and WAN.";
-    }
+    aiForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-    if (includesAny(["cyber", "hack", "security", "الأمن السيبراني", "الأمن"])) {
-      return aiLanguage === "ar"
-        ? "الأمن السيبراني يحمي الأنظمة والشبكات والبيانات. ابدأ بأساسيات الشبكات وLinux والتدريب القانوني."
-        : "Cybersecurity protects systems, networks, and data. Start with networking, Linux, and legal practice.";
-    }
+        const question = aiInput.value.trim();
+        if (!question) return;
 
-    if (includesAny(["program", "python", "javascript", "html", "css", "برمجة", "البرمجة"])) {
-      return aiLanguage === "ar"
-        ? "يمكنك تعلّم HTML وCSS وJavaScript لتطوير المواقع، أو Python لأساسيات البرمجة."
-        : "Learn HTML, CSS, and JavaScript for web development, or Python for programming fundamentals.";
-    }
+        addAIMessage(question, "ai-user");
+        aiInput.value = "";
+        aiInput.disabled = true;
 
-    if (includesAny(["robot", "روبوت", "الروبوتات"])) {
-      return aiLanguage === "ar"
-        ? "الروبوتات تجمع بين البرمجة والإلكترونيات وأجهزة الاستشعار."
-        : "Robotics combines programming, electronics, and sensors.";
-    }
+        const loading = addAIMessage(
+            aiLanguage === "ar" ? "ST AI كيفكر..." : "ST AI is thinking...",
+            "ai-bot"
+        );
 
-    if (includesAny(["nabil", "نبيل", "about", "من أنت", "من هو"])) {
-      return aiLanguage === "ar"
-        ? "أنا AI / ST، مساعد موقع نبيل الكاملي من وجدة، المغرب. يهتم نبيل بالبرمجة والشبكات والأمن السيبراني والروبوتات."
-        : "I am AI / ST, the assistant for Nabil El Kamel's website. Nabil is from Oujda, Morocco, and is interested in programming, networking, cybersecurity, and robotics.";
-    }
+        try {
+            const answer = await askSTAI(question);
+            loading.textContent = answer;
 
-    return aiLanguage === "ar"
-      ? "جرّب تسولني على نبيل أو المشاريع أو البرمجة أو الشبكات أو الأمن السيبراني."
-      : "Ask me about Nabil, projects, programming, networking, or cybersecurity.";
-  }
+            chatHistory.push(
+                { role: "user", parts: [{ text: question }] },
+                { role: "model", parts: [{ text: answer }] }
+            );
 
-  aiForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+            chatHistory = chatHistory.slice(-10);
 
-    const question = aiInput.value.trim();
-    if (!question) return;
-
-    addAIMessage(question, "ai-user");
-    addAIMessage(getAIAnswer(question), "ai-bot");
-
-    aiInput.value = "";
-    aiInput.focus();
-  });
+        } catch (error) {
+            console.error("ST AI:", error);
+            loading.textContent = "ST AI could not connect. Check the server setup.";
+        } finally {
+            aiInput.disabled = false;
+            aiInput.focus();
+        }
+    });
 });
