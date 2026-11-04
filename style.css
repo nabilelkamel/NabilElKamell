@@ -1097,7 +1097,7 @@ body::after {
     transition: 0.2s;
 }
 
-/* ===== ST SOFT PINK NAVIGATION ===== */
+/* ===== ST SOFT ROSE NAVIGATION ===== */
 
 .nav-links a {
     width: 43px;
@@ -1106,10 +1106,10 @@ body::after {
     align-items: center;
     justify-content: center;
 
-    background: #171317;
-    color: #f08aa8;
+    background: #151315;
+    color: #e8a9c0;
 
-    border: 1px solid rgba(240, 138, 168, 0.45);
+    border: 1px solid #654653;
     border-radius: 13px;
 
     font-size: 18px;
@@ -1119,12 +1119,13 @@ body::after {
 }
 
 .nav-links a:hover {
-    background: #e87998;
-    color: #fff;
-    border-color: #e87998;
+    background: #d99bb3;
+    color: #ffffff;
+    border-color: #d99bb3;
 
-    transform: translateY(-4px);
+    transform: translateY(-3px);
+    box-shadow: 0 0 12px rgba(217, 155, 179, 0.25);
+}
 
-    box-shadow: 0 0 12px rgba(232, 121, 152, 0.4);
 }
 
