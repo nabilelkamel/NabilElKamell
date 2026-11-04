@@ -1097,6 +1097,34 @@ body::after {
     transition: 0.2s;
 }
 
+/* ===== ST ICON NAVIGATION ===== */
+
+.nav-links a {
+    width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ff2020;
+    border-radius: 12px;
+    color: #ff2020;
+    background: #111;
+    font-size: 18px;
+    text-decoration: none;
+    transition: 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #fff;
+    background: #ff2020;
+    transform: translateY(-4px);
+    box-shadow: 0 0 15px #ff2020;
+}
+
+.nav-links a i {
+    pointer-events: none;
+}
+
 .star.active {
     color: red;
 }
