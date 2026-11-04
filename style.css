@@ -1119,8 +1119,8 @@ body::after {
 }
 
 .nav-links a:hover {
-    background: #f2c6d8;
-    color: #171717;
+    background: #D9252E;
+    color: #D9252E;
     border-color: #f2c6d8;
 
     transform: translateY(-3px);
