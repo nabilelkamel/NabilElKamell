@@ -1097,7 +1097,7 @@ body::after {
     transition: 0.2s;
 }
 
-/* ===== ST ICON NAVIGATION ===== */
+/* ===== ST SOFT PINK NAVIGATION ===== */
 
 .nav-links a {
     width: 43px;
@@ -1105,26 +1105,26 @@ body::after {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ff2020;
-    border-radius: 12px;
-    color: #ff2020;
-    background: #111;
+
+    background: #171317;
+    color: #f08aa8;
+
+    border: 1px solid rgba(240, 138, 168, 0.45);
+    border-radius: 13px;
+
     font-size: 18px;
     text-decoration: none;
-    transition: 0.3s ease;
+
+    transition: all 0.3s ease;
 }
 
 .nav-links a:hover {
+    background: #e87998;
     color: #fff;
-    background: #ff2020;
+    border-color: #e87998;
+
     transform: translateY(-4px);
-    box-shadow: 0 0 15px #ff2020;
+
+    box-shadow: 0 0 12px rgba(232, 121, 152, 0.4);
 }
 
-.nav-links a i {
-    pointer-events: none;
-}
-
-.star.active {
-    color: red;
-}
