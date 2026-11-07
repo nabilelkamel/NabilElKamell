@@ -173,80 +173,102 @@ for (let i = 0; i < 4; i++) {
 }
 
 })();
-// ===== ST AI BOT =====
 
-const aiMessages = document.getElementById("ai-messages");
-const aiForm = document.getElementById("ai-form");
-const aiInput = document.getElementById("ai-input");
+// ===== ST PERSONAL ASSISTANT =====
 
-function addMessage(text, type = "bot") {
-    const message = document.createElement("div");
-    message.className = type === "user" ? "ai-user" : "ai-bot";
-    message.textContent = text;
-    aiMessages.appendChild(message);
-    aiMessages.scrollTop = aiMessages.scrollHeight;
+const chatToggle = document.getElementById("st-chat-toggle");
+const chatWindow = document.getElementById("st-chat-window");
+const chatClose = document.getElementById("st-chat-close");
+const chatForm = document.getElementById("st-chat-form");
+const chatInput = document.getElementById("st-chat-input");
+const chatMessages = document.getElementById("st-chat-messages");
+
+chatToggle.addEventListener("click", () => {
+    chatWindow.hidden = !chatWindow.hidden;
+});
+
+chatClose.addEventListener("click", () => {
+    chatWindow.hidden = true;
+});
+
+function addMessage(message, sender) {
+    const div = document.createElement("div");
+    div.className = "st-message " + sender;
+    div.textContent = message;
+    chatMessages.appendChild(div);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
-function addSearchLink(query) {
-    const link = document.createElement("a");
-    link.href = "https://www.google.com/search?q=" + encodeURIComponent(query);
-    link.target = "_blank";
-    link.rel = "noopener noreferrer";
-    link.textContent = "🔎 Search the web";
-    link.style.display = "block";
-    link.style.margin = "10px";
-    aiMessages.appendChild(link);
-}
-
-function getSTResponse(question) {
+function getSTAnswer(question) {
     const q = question.toLowerCase();
 
-    if (/^(hi|hello|hey|salam|سلام|مرحبا)/i.test(q)) {
-        return "Hello! Welcome to ST AI. How can I help you today?";
+    if (/who is nabil|about nabil|tell me about nabil|من هو نبيل/.test(q)) {
+        return "Nabil El Kamel is a student from Oujda, Morocco, interested in technology, programming, networking and software development. He is continuously learning and building new projects.";
     }
 
-    if (q.includes("who are you") || q.includes("chkon nta")) {
-        return "I am ST AI, your digital assistant. Ask me about different topics!";
+    if (/project|projects|work|portfolio|المشاريع/.test(q)) {
+        return "Here are Nabil's projects:\n\n01. Personal Portfolio – A website presenting his profile and skills.\n\n02. Morocco Cancer Assist – A project concept focused on cancer information and support in Morocco.\n\n03. Python Experiments – Small Python coding exercises.\n\n04. Network Infrastructure Lab – Networking practice using Cisco Packet Tracer and Wireshark.";
     }
 
-    if (q.includes("programming") || q.includes("python") || q.includes("html")) {
-        return "You can learn programming through free tutorials and practical exercises.";
+    if (/skill|skills|technolog|مهارات/.test(q)) {
+        return "Nabil is developing skills in:\n\n• HTML, CSS and JavaScript\n• Python Programming\n• Computer Networking\n• Cisco Packet Tracer\n• Wireshark\n• Software Development\n\nHe is learning step by step.";
     }
 
-    if (q.includes("cybersecurity") || q.includes("cyber security")) {
-        return "Cybersecurity is the practice of protecting systems, networks and information.";
+    if (/network|packet tracer|wireshark|شبكات/.test(q)) {
+        return "Nabil is learning computer networking, including IP addressing, routers, switches, TCP/IP and network troubleshooting. He practices using Cisco Packet Tracer and Wireshark.";
     }
 
-    if (q.includes("science") || q.includes("physics")) {
-        return "Science helps us understand the world through observation and experiments.";
+    if (/web development|website|html|css|javascript/.test(q)) {
+        return "Nabil is learning Web Development using HTML, CSS and JavaScript. He works on personal websites and interactive web projects.";
     }
 
-    if (q.includes("thank") || q.includes("شكرا")) {
-        return "You're welcome! I'm here to help.";
+    if (/python|programming|coding/.test(q)) {
+        return "Nabil is learning Python programming and developing small coding experiments to improve his programming skills.";
     }
 
-    return "I don't have a reliable answer stored for this question. You can search the web for more information:";
+    if (/contact|github|instagram|linkedin|social|اتصل/.test(q)) {
+        return "You can connect with Nabil through:\n\nGitHub: github.com/elknabil795-ops\n\nInstagram: @nabil__elk_\n\nLinkedIn: linkedin.com/in/nabil-el-kamel-16363b412/\n\nFeel free to explore his profiles!";
+    }
+
+    if (/morocco cancer|cancer assist/.test(q)) {
+        return "Morocco Cancer Assist is a web project concept focused on providing cancer-related information and support in Morocco. It uses HTML, CSS and JavaScript.";
+    }
+
+    if (/hello|hi|hey|salam|مرحبا/.test(q)) {
+        return "Hello! Welcome to Nabil's Portfolio. 👋 How can I help you?";
+    }
+
+    if (/thank|thanks|شكرا/.test(q)) {
+        return "You're welcome! Thank you for visiting Nabil's Portfolio. ❤️";
+    }
+
+    return "Thanks for your question! I'm ST Assistant. I can explain Nabil's profile, projects, skills and contact information. Try asking about one of these topics.";
 }
 
-aiForm.addEventListener("submit", function(e) {
-    e.preventDefault();
+function sendSTMessage(message) {
+    const question = message.trim();
 
-    const question = aiInput.value.trim();
     if (!question) return;
 
     addMessage(question, "user");
 
-    const answer = getSTResponse(question);
-    addMessage(answer, "bot");
+    const answer = getSTAnswer(question);
 
-    if (answer.startsWith("I don't have")) {
-        addSearchLink(question);
-    }
+    setTimeout(() => {
+        addMessage(answer, "bot");
+    }, 300);
+}
 
-    aiInput.value = "";
+chatForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    sendSTMessage(chatInput.value);
+    chatInput.value = "";
 });
 
-// Welcome message
-if (aiMessages && aiMessages.children.length === 0) {
-    addMessage("Welcome to ST AI! Ask me anything.");
-}
+document.querySelectorAll(".st-chat-suggestions button")
+.forEach(button => {
+    button.addEventListener("click", () => {
+        sendSTMessage(button.dataset.question);
+    });
+});
