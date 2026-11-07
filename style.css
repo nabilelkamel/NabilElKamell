@@ -880,113 +880,7 @@ body::after {
 }
 
 
-/* AI / ST Assistant */
-#ai-st {
-  position: fixed;
-  right: 20px;
-  bottom: 20px;
-  z-index: 9999;
-  font-family: Arial, sans-serif;
-}
-
-#ai-toggle {
-  background: #e63946;
-  color: white;
-  border: 1px solid #ff6874;
-  padding: 13px 20px;
-  border-radius: 30px;
-  cursor: pointer;
-  box-shadow: 0 0 18px #e6394670;
-}
-
-#ai-box {
-  width: min(340px, calc(100vw - 40px));
-  height: 410px;
-  background: #101018;
-  color: white;
-  border: 1px solid #e63946;
-  border-radius: 15px;
-  margin-bottom: 12px;
-  overflow: hidden;
-  box-shadow: 0 0 25px #e6394630;
-}
-
-#ai-box[hidden] {
-  display: none;
-}
-
-.ai-header {
-  padding: 14px;
-  background: #1b1b26;
-  display: flex;
-  justify-content: space-between;
-}
-
-.ai-header button,
-.ai-controls button {
-  cursor: pointer;
-  color: white;
-  background: #292936;
-  border: none;
-  padding: 7px;
-  border-radius: 6px;
-}
-
-#ai-messages {
-  height: 245px;
-  padding: 12px;
-  overflow-y: auto;
-  font-size: 14px;
-}
-
-.ai-bot,
-.ai-user {
-  padding: 10px;
-  border-radius: 10px;
-  overflow-wrap: anywhere;
-  line-height: 1.5;
-}
-
-.ai-bot {
-  background: #20202c;
-}
-
-.ai-user {
-  background: #7e2029;
-  text-align: right;
-}
-
-.ai-controls {
-  display: flex;
-  gap: 8px;
-  padding: 0 10px 8px;
-}
-
-#ai-form {
-  display: flex;
-  gap: 5px;
-  padding: 10px;
-}
-
-#ai-input {
-  min-width: 0;
-  flex: 1;
-  padding: 9px;
-  border-radius: 7px;
-  border: 1px solid #444;
-  background: #191923;
-  color: white;
-}
-
-#ai-form button {
-  background: #e63946;
-  color: white;
-  border: none;
-  border-radius: 7px;
-  padding: 8px;
-  cursor: pointer;
-}
-
+/
 .contact-info {
     display: flex;
     flex-wrap: wrap;
@@ -1096,3 +990,156 @@ body::after {
     cursor: pointer;
     transition: 0.2s;
 }
+
+/* ===== ST PERSONAL ASSISTANT ===== */
+
+#st-assistant {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 9999;
+    font-family: Arial, sans-serif;
+}
+
+#st-chat-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #ff4545;
+    background: #111;
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+    box-shadow: 0 0 18px rgba(255, 50, 50, .3);
+}
+
+#st-chat-window {
+    width: 340px;
+    height: 480px;
+    background: #101010;
+    border: 1px solid #333;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    color: white;
+    box-shadow: 0 5px 30px #0008;
+}
+
+#st-chat-window[hidden] {
+    display: none;
+}
+
+.st-chat-header {
+    background: #1b1b1b;
+    padding: 17px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #e63946;
+}
+
+.st-chat-header strong {
+    display: block;
+    color: #ff4545;
+    font-size: 17px;
+}
+
+.st-chat-header small {
+    color: #aaa;
+    font-size: 11px;
+}
+
+#st-chat-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+#st-chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.st-message {
+    padding: 11px;
+    border-radius: 10px;
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre-line;
+    max-width: 90%;
+}
+
+.st-message.bot {
+    background: #242424;
+    align-self: flex-start;
+}
+
+.st-message.user {
+    background: #9e252d;
+    align-self: flex-end;
+}
+
+.st-chat-suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 8px;
+}
+
+.st-chat-suggestions button {
+    background: #202020;
+    border: 1px solid #a52a32;
+    color: white;
+    border-radius: 15px;
+    padding: 7px 10px;
+    font-size: 10px;
+    cursor: pointer;
+}
+
+#st-chat-form {
+    display: flex;
+    padding: 12px;
+    gap: 8px;
+    border-top: 1px solid #333;
+}
+
+#st-chat-input {
+    flex: 1;
+    min-width: 0;
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 11px;
+    border-radius: 8px;
+    outline: none;
+}
+
+#st-chat-form button {
+    background: #c8323d;
+    border: none;
+    color: white;
+    padding: 0 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+@media(max-width: 450px) {
+    #st-assistant {
+        right: 12px;
+        bottom: 12px;
+    }
+
+    #st-chat-window {
+        width: min(340px, calc(100vw - 24px));
+        height: 450px;
+    }
+}
+
