@@ -311,6 +311,51 @@ Alhamdulillah for everything, and thanks for visiting my portfolio ❤️
     </section>
 </main>
 
+<!-- ST PERSONAL ASSISTANT -->
+<div id="st-assistant">
+
+    <button id="st-chat-toggle" aria-label="Open assistant">
+        🤖
+    </button>
+
+    <div id="st-chat-window" hidden>
+
+        <div class="st-chat-header">
+            <div>
+                <strong>ST Assistant</strong>
+                <small>Personal Portfolio Assistant</small>
+            </div>
+            <button id="st-chat-close">✕</button>
+        </div>
+
+        <div id="st-chat-messages">
+            <div class="st-message bot">
+                Hello! 👋 I'm ST Assistant.
+                Ask me about Nabil, his skills, projects or contact information!
+            </div>
+        </div>
+
+        <div class="st-chat-suggestions">
+            <button data-question="Who is Nabil?">About Nabil</button>
+            <button data-question="Tell me about his projects">Projects</button>
+            <button data-question="What are his skills?">Skills</button>
+            <button data-question="How can I contact Nabil?">Contact</button>
+        </div>
+
+        <form id="st-chat-form">
+            <input
+                type="text"
+                id="st-chat-input"
+                placeholder="Ask me anything..."
+                autocomplete="off"
+                required
+            >
+            <button type="submit">➤</button>
+        </form>
+
+    </div>
+</div>
+
 
 <footer class="footer">
     <a class="logo" href="#home">Nabil<span>.</span></a>
