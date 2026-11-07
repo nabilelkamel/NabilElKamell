@@ -188,7 +188,7 @@ chatToggle.addEventListener("click", () => {
 });
 
 chatClose.addEventListener("click", () => {
-    chatWindow.hidden = true;
+    chatWindow.hidden = true; 
 });
 
 function addMessage(message, sender) {
