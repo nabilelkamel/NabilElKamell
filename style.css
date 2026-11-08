@@ -1142,3 +1142,99 @@ body::after {
         height: 450px;
     }
 }
+/* Arrière-plan global sombre avec dégradé rouge */
+body {
+  background: radial-gradient(circle at top center, #3a0007 0%, #080002 70%);
+  color: #ffffff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+/* Titre principal */
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+/* Grille responsive pour placer les cartes côte à côte */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Style de la carte de projet */
+.project-card {
+  background-color: #0d0d0d;
+  border: 2px solid #e50914;
+  border-radius: 24px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(229, 9, 20, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Effet lumineux au passage de la souris */
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 0 30px rgba(229, 9, 20, 0.7);
+}
+
+/* Conteneur de l'image */
+.project-img-wrapper {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.project-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+/* Informations du projet */
+.project-info {
+  text-align: center;
+}
+
+.project-name {
+  font-size: 1.5rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.project-desc {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+  line-height: 1.5;
+  margin-bottom: 24px;
+}
+
+/* Bouton See Project */
+.btn-project {
+  display: inline-block;
+  background-color: #e50914;
+  color: #ffffff;
+  padding: 10px 24px;
+  border-radius: 20px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-project:hover {
+  background-color: #ff1e27;
+  box-shadow: 0 0 20px rgba(229, 9, 20, 0.8);
+}
