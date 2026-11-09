@@ -1,124 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Nabil El Kamel</title>
-    <meta name="description" content="Official portfolio of Nabil El Kamel from Oujda, Morocco. Explore programming, web development, software development, and Networking.">
-    <meta name="author" content="Nabil El Kamel">
-    <meta name="theme-color" content="#7d2d20">
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+    <title>Portfolio Website </title>
 </head>
-    </head>
- <head>
-
-<title>Nabil El Kamel</title>
-
-<link rel="icon" type="image/png" href="logo.png">
-
-</head> 
-
+ 
 <body>
-<header class="navbar">
+    <!-- Header Section -->
 
-    <a class="logo" href="#home">Nabil El Kamel<span>.</span></a>
+    <header>
+        <a href="#home" class="logo">Monica <span>Botez</span></a>
 
-    <div class="nav-actions">
-        <button id="themeBtn" class="theme-btn"
-                aria-label="Toggle light and dark theme"
-                title="Change theme">
-            <i class="fa-solid fa-sun"></i>
-        </button>
+        <div class="bx bx-menu" id="menu-icon"></div>
 
-        <button id="menuBtn" class="menu-btn"
-                aria-label="Open navigation menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-    </div>
-
-    <nav>
-        <ul class="nav-links" id="navLinks">
+        <ul class="navbar">
             <li><a href="#home">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-    </nav>
-</header>
 
-<main>
-    <!-- HERO -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <p class="eyebrow">
-                <span class="status-dot"></span>
-                STUDENT · TECH ENTHUSIAST
-            </p>
+        <div class="top-btn">
+            <a href="#contact" class="nav-btn">Contact me</a>
+        </div>
+    </header>
 
-            <h1>
-                Hi, I'm <span class="gradient-text">Nabil El Kamel</span>
-            </h1>
-            
-            <p class="hero-description">
-                A student from Oujda, Morocco, passionate about programming,
-                software development, and networking .
-                I learn by building projects and exploring new technologies.
-            </p>
+    <!-- Home Section -->
 
-            <div class="hero-buttons">
-                <a href="#projects" class="btn">
-                    <i class="fa-solid fa-code"></i> Explore Projects
-                </a>
-                <a href="#contact" class="btn btn-outline">
-                    Contact Me <i class="fa-solid fa-arrow-right"></i>
-                </a>
-                
-</button>
-            </div>
+    <section id="home" class="home">
 
-            <div class="hero-socials">
-                <a href="https://github.com/elknabil795-ops"
-                   target="_blank" rel="noopener noreferrer"
-                   aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-
-                <a href="https://www.instagram.com/nabil__elk_/"
-                   target="_blank" rel="noopener noreferrer"
-                   aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-
-                <a href="https://x.com/elknabil299269"
-                   target="_blank" rel="noopener noreferrer"
-                   aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-
-                <a href="https://www.linkedin.com/in/nabil-el-kamel-16363b412/"
-                   target="_blank" rel="noopener noreferrer"
-                   aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-            </div>
+        <div class="home-img">
+            <img src="assets/ProfileImage1.jpg" alt="Profile Image">
         </div>
 
-        <div class="hero-visual">
-            <div class="profile-ring">
-                <div class="profile-image">
-                    <img src="nabil.jpg" alt="Nabil El Kamel"
-                         onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">
-                    <span class="profile-fallback">NE</span>
-                </div>
+        <div class="home-content">
+            <h1>Hello, It's <span>Monica</span></h1>
+            <h3>And I'm a <br> <span class="multiple-text"></span></h3>
+
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident a enim quisquam sapiente saepe eveniet
+                placeat, commodi, temporibus aliquam similique, qui et impedit quos perspiciatis?</p>
+
+            <div class="social-icons">
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                <a href="#"><i class='bx bxl-github' ></i></a>
+                <a href="#"><i class='bx bxl-facebook'></i></a>
+                <a href="#"><i class='bx bxl-instagram' ></i></a>
             </div>
-            <div class="floating-tag tag-top">
-                <i class="fa-brands fa-python"></i> web development
-            </div>
-            <div class="floating-tag tag-bottom">
-                <i class="fa-solid fa-shield-halved"></i> Networking
-            </div>
+
+            <a href="#" class="btn">Hire Me</a>
+
         </div>
     </section>
 
-      <!-- About Section -->
+    <!-- About Section -->
 
     <section id="about" class="about">
         <div class="about-content">
@@ -133,191 +72,178 @@
         </div>
     </section>
 
-    <!-- SKILLS -->
-    <section class="section reveal" id="skills">
-        <p class="eyebrow">WHAT I'M EXPLORING</p>
-        <h2 class="section-title">My <span class="accent">Skills</span></h2>
-        <p class="section-text">
-            Technologies and subjects I'm currently learning and practising.
-        </p>
+    <!-- Services Section Code -->
 
-            <article class="skill-card">
-                <div class="skill-icon"><i class="fa-brands fa-html5"></i></div>
-                <h3>HTML & CSS & js</h3>
-                <p>Building and styling responsive websites.</p>
-                <span class="skill-label">Learning</span>
-            </article>
+    <section class="services" id="services">
+        <h2 class="heading">My <span>Services</span></h2>
+        
 
-            <article class="skill-card">
-                <div class="skill-icon"><i class="fa-solid fa-network-wired"></i></div>
-                <h3>Networking</h3>
-                <p>Network concepts, IP addressing and network labs.</p>
-                <span class="skill-label">Learning</span>
-            </article>
-            
+        <div class="services-content"  data-aos="zoom-in-up">
+            <div class="box">
+                <div class="row-icon">
+                    <i class='bx bx-code'></i>
+                </div>
+                <h3>Website Development</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis mollitia necessitatibus magnam
+                    modi, saepe aliquid corrupti tenetur voluptates consequatur labore dolorem aperiam animi impedit
+                    incidunt!</p>
+                <a href="#">
+                    Contact Now
+                    <i class='bx bx-right-arrow-alt'></i>
+                </a>
+            </div>
+            <div class="box">
+                <div class="row-icon">
+                    <i class='bx bx-code'></i>
+            </div>
+                <h3>Website Development</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis mollitia necessitatibus magnam
+                    modi, saepe aliquid corrupti tenetur voluptates consequatur labore dolorem aperiam animi impedit
+                    incidunt!</p>
+                <a href="#">
+                    Contact Now
+                    <i class='bx bx-right-arrow-alt'></i>
+                </a>
+            </div>
+            <div class="box">
+                <div class="row-icon">
+                    <i class='bx bx-code'></i>
+                </div>
+                <h3>Website Development</h3>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis mollitia necessitatibus magnam
+                    modi, saepe aliquid corrupti tenetur voluptates consequatur labore dolorem aperiam animi impedit
+                    incidunt!</p>
+                <a href="#">
+                    Contact Now
+                    <i class='bx bx-right-arrow-alt'></i>
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- PROJECTS -->
-    <section class="section reveal" id="projects">
-        <p class="eyebrow">THINGS I'M BUILDING</p>
-        <h2 class="section-title">Featured <span class="accent">Projects</span></h2>
-        <p class="section-text">
-            A selection of my personal work and learning projects.
-        </p>
+    <!-- Portfolio Section Code -->
 
-        <div class="projects-grid">
-            <article class="project-card">
-                <div class="project-visual visual-red">
-                    <i class="fa-solid fa-laptop-code"></i>
-                    <span>01 / WEB</span>
-                </div>
-                <div class="project-info">
-                    <p class="project-type">WEB DEVELOPMENT</p>
-                    <h3>Personal Portfolio</h3>
-                    <p>A personal website for my profile, skills and projects.</p>
-                    <div class="tech-tags">
-                        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+    <section class="portfolio" id="portfolio">
+
+        <h2 class="heading">My <span>Portfolio</span></h2>
+
+        <div class="portfolio-content"  data-aos="zoom-in-up">
+            <div class="row">
+                <img src="assets/img1.jpg" alt="">
+                <div class="main-row">
+                    <div class="row-text">
+                        <h5>Website Design</h5>
                     </div>
-                    <a class="project-link"
-                       href="https://github.com/elknabil795-ops"
-                       target="_blank" rel="noopener noreferrer">
-                        View on GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
-                </div>
-            </article>
-
-            <article class="project-card">
-                <div class="project-visual visual-purple">
-                    <i class="fa-solid fa-heart-pulse"></i>
-                    <span>02 / SOCIAL IMPACT</span>
-                </div>
-                <div class="project-info">
-                    <p class="project-type">WEB PROJECT</p>
-                    <h3>Morocco Cancer Assist</h3>
-                    <p>A project concept focused on cancer information and support in Morocco.</p>
-                    <div class="tech-tags">
-                        <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                    <div class="row-icon">
+                        <i class='bx bxl-github'></i>
                     </div>
-                    <a class="project-link"
-                       href="https://github.com/elknabil795-ops"
-                       target="_blank" rel="noopener noreferrer">
-                        Explore my GitHub <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
                 </div>
-            </article>
-       <!-- NETWORKING PROJECT -->
-            <article class="project-card">
-                <div class="project-visual visual-blue">
-                    <i class="fa-solid fa-network-wired"></i>
-                    <span>03 / NETWORKING</span>
-                </div>
+                <h4>Website Development</h4>
+            </div>
 
-                <div class="project-info">
-                    <p class="project-type">NETWORKING & NETWORK ADMINISTRATION</p>
-
-                    <h3>Network Configuration & Analysis</h3>
-
-                    <p>
-                        A practical networking project focused on network
-                        configuration, device connectivity, IP addressing,
-                        router setup and network troubleshooting.
-                    </p>
-
-                    <div class="tech-tags">
-                        <span>Cisco Packet Tracer</span>
-                        <span>Wireshark</span>
-                        <span>TCP/IP</span>
-                        <span>DNS</span>
+            <div class="row">
+                <img src="assets/img2.jpg" alt="">
+                <div class="main-row">
+                    <div class="row-text">
+                        <h5>Website Design</h5>
                     </div>
-
-                    <a class="project-link"
-                       href="https://github.com/elknabil795-ops"
-                       target="_blank" rel="noopener noreferrer">
-                        Explore my GitHub
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-                    </a>
+                    <div class="row-icon">
+                        <i class='bx bxl-github'></i>
+                    </div>
                 </div>
-            </article
-                <!-- ST VISION PROJECT -->
-<article class="project-card">
+                <h4>Website Development</h4>
+            </div>
 
-    <div class="project-visual visual-green">
-        <i class="fa-solid fa-eye"></i>
-        <span>04 / AI & ACCESSIBILITY</span>
-    </div>
+            <div class="row">
+                <img src="assets/img3.jpg" alt="">
+                <div class="main-row">
+                    <div class="row-text">
+                        <h5>Website Design</h5>
+                    </div>
+                    <div class="row-icon">
+                        <i class='bx bxl-github'></i>
+                    </div>
+                </div>
+                <h4>Website Development</h4>
+            </div>
 
-    <div class="project-info">
+            <div class="row">
+                <img src="assets/img4.jpg" alt="">
+                <div class="main-row">
+                    <div class="row-text">
+                        <h5>Website Design</h5>
+                    </div>
+                    <div class="row-icon">
+                        <i class='bx bxl-github'></i>
+                    </div>
+                </div>
+                <h4>Website Development</h4>
+            </div>
 
-        <p class="project-type">AI & SOFTWARE DEVELOPMENT</p>
+            <div class="row">
+                <img src="assets/img5.jpg" alt="">
+                <div class="main-row">
+                    <div class="row-text">
+                        <h5>Website Design</h5>
+                    </div>
+                    <div class="row-icon">
+                        <i class='bx bxl-github'></i>
+                    </div>
+                </div>
+                <h4>Website Development</h4>
+            </div>
 
-        <h3>ST Vision</h3>
-
-        <p>
-            An AI-powered accessibility assistant designed
-            to support blind and visually impaired people
-            through voice interaction, smart camera assistance,
-            text recognition and intelligent accessibility features.
-        </p>
-
-        <div class="tech-tags">
-            <span>Kotlin</span>
-            <span>Android Studio</span>
-            <span>Artificial Intelligence</span>
-            <span>Computer Vision</span>
-            <span>Voice Assistant</span>
-            <span>Text Recognition</span>
-        </div>
-
-        <a class="project-link"
-           href="https://github.com/elknabil795-ops"
-           target="_blank" rel="noopener noreferrer">
-            Explore my GitHub
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
-        </a>
-
-    </div>
-</article>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section reveal" id="contact">
-        <p class="eyebrow">LET'S CONNECT</p>
-        <h2 class="section-title">Find Me <span class="accent">Online</span></h2>
-        <p class="section-text">
-            Follow my work and learning journey through my public profiles.
-        </p>
-
-        <div class="social-links">
-            <a class="social instagram"
-               href="https://www.instagram.com/nabil__elk_/"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-
-            <a class="social x-twitter"
-               href="https://x.com/elknabil299269"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
-
-            <a class="social github"
-               href="https://github.com/elknabil795-ops"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-
-            <a class="social linkedin"
-               href="https://www.linkedin.com/in/nabil-el-kamel-16363b412/"
-               target="_blank" rel="noopener noreferrer"
-               aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+            <div class="row">
+                <img src="assets/img6.jpg" alt="">
+                <div class="main-row">
+                    <div class="row-text">
+                        <h5>Website Design</h5>
+                    </div>
+                    <div class="row-icon">
+                        <i class='bx bxl-github'></i>
+                    </div>
+                </div>
+                <h4>Website Development</h4>
+            </div>
         </div>
     </section>
-</main>
 
+    <!-- Contact Section -->
 
-<footer class="footer">
-    <a class="logo" href="#home">Nabil El Kamel<span>.</span></a>
-    <p>Built while learning, with curiosity and ambition.</p>
-    <p>© <span id="year"></span> Nabil El Kamel</p>
-</footer>
+    <section id="contact" class="contact">
+        <h2 class="heading">Contact <span>Me</span></h2>
+
+        <form action="#">
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Full Name">
+                <input type="email" name="email" placeholder="Email Address">
+            </div>
+            <div class="input-box">
+                <input type="number" name="number" placeholder="Phone Number">
+                <input type="text" name="subject" placeholder="Email Subject">
+            </div>
+
+            <textarea name="message" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+            <input type="submit" value="Send Message" class="btn">
+        </form>
+    </section>
+
+    <!-- Footer Section -->
+
+    <footer class="footer">
+        <div class="social">
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+            <a href="#"><i class='bx bxl-github' ></i></a>
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-instagram' ></i></a>
+        </div>
+
+        <p class="copyright">
+            &copy; Monica Botez | All Rights Reserved
+        </p>
+    </footer>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="script.js"></script>
 </body>
-</html>
 
+</html>
