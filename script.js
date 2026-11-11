@@ -1,871 +1,295 @@
-:root {
-    --bg: #09090d;
-    --surface: #12121a;
-    --surface-2: #191923;
-    --text: #f5f5f7;
-    --muted: #aaaab8;
-    --border: #292936;
-    --red: #e63946;
-    --red-glow: #e6394630;
-    --nav-bg: rgba(9, 9, 13, 0.90);
-}
-
-body.light-theme {
-    --bg: #f5f5f8;
-    --surface: #ffffff;
-    --surface-2: #eeeef3;
-    --text: #171720;
-    --muted: #606070;
-    --border: #dedee8;
-    --red: #cf2637;
-    --red-glow: #cf26371c;
-    --nav-bg: rgba(245, 245, 248, 0.92);
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 90px;
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background:
-        radial-gradient(ellipse at 80% 0%, var(--red-glow), transparent 36%),
-        var(--bg);
-    color: var(--text);
-    line-height: 1.7;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
-}
-
-button {
-    font: inherit;
-}
-
-.navbar {
-    min-height: 76px;
-    padding: 14px 8%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: var(--nav-bg);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-}
-
-.logo {
-    font-size: 26px;
-    font-weight: 800;
-    letter-spacing: -1px;
-}
-
-.logo span {
-    color: var(--red);
-}
-
-.nav-links {
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 25px;
-}
-
-.nav-links a {
-    color: var(--muted);
-    transition: color 0.25s;
-}
-
-.nav-links a:hover {
-    color: var(--red);
-}
-
-.nav-actions {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.theme-btn,
-.menu-btn {
-    width: 42px;
-    height: 42px;
-    display: grid;
-    place-items: center;
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    cursor: pointer;
-    transition: 0.25s;
-}
-
-.theme-btn:hover,
-.menu-btn:hover {
-    border-color: var(--red);
-    color: var(--red);
-    box-shadow: 0 0 18px var(--red-glow);
-}
-
-.menu-btn {
-    display: none;
-}
-
-/* HERO */
-
-.hero {
-    max-width: 1250px;
-    min-height: 650px;
-    padding: 90px 8%;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 1.3fr 0.7fr;
-    align-items: center;
-    gap: 65px;
-}
-
-.hero-content {
-    animation: enter 0.8s ease both;
-}
-
-.eyebrow {
-    color: var(--red);
-    font-size: 12px;
-    font-weight: 800;
-    letter-spacing: 2px;
-    margin-bottom: 15px;
-}
-
-.status-dot {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    margin-right: 6px;
-    border-radius: 50%;
-    background: #36d98a;
-    box-shadow: 0 0 10px #36d98a80;
-}
-
-.hero h1 {
-    font-size: clamp(36px, 5vw, 62px);
-    line-height: 1.18;
-    letter-spacing: -2px;
-    margin-bottom: 20px;
-}
-
-.gradient-text {
-    color: var(--red);
-    background: linear-gradient(90deg, #ff6671, var(--red), #ff9c77);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.role-line {
-    font-size: clamp(18px, 2.3vw, 26px);
-    margin-bottom: 20px;
-}
-
-#typedText {
-    color: var(--red);
-}
-
-.cursor {
-    color: var(--red);
-    animation: blink 0.8s step-end infinite;
-}
-
-.hero-description {
-    max-width: 610px;
-    color: var(--muted);
-    font-size: 16px;
-}
-
-.hero-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    margin-top: 28px;
-}
-
-.btn {
-    min-height: 47px;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    padding: 12px 19px;
-    color: white;
-    background: var(--red);
-    border: 1px solid var(--red);
-    border-radius: 9px;
-    font-size: 14px;
-    font-weight: 700;
-    transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
-}
-
-.btn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 0 25px var(--red-glow);
-}
-
-.btn-outline {
-    color: var(--text);
-    background: transparent;
-    border-color: var(--border);
-}
+// ===== MOBILE MENU =====
 
-.btn-outline:hover {
-    border-color: var(--red);
-    color: var(--red);
-}
-
-.hero-socials {
-    display: flex;
-    gap: 22px;
-    margin-top: 28px;
-}
+const menuBtn = document.getElementById("menuBtn");
+const navLinks = document.getElementById("navLinks");
 
-.hero-socials a {
-    color: var(--muted);
-    font-size: 23px;
-    transition: 0.25s;
-}
+if (menuBtn && navLinks) {
+menuBtn.addEventListener("click", () => {
+const isOpen = navLinks.classList.toggle("open");
 
-.hero-socials a:hover {
-    color: var(--red);
-    transform: translateY(-3px);
-    text-shadow: 0 0 15px var(--red-glow);
-}
+menuBtn.setAttribute("aria-expanded", String(isOpen));  
+    menuBtn.innerHTML = isOpen  
+        ? '<i class="fa-solid fa-xmark"></i>'  
+        : '<i class="fa-solid fa-bars"></i>';  
+});  
 
-/* PROFILE IMAGE */
+navLinks.querySelectorAll("a").forEach((link) => {  
+    link.addEventListener("click", () => {  
+        navLinks.classList.remove("open");  
+        menuBtn.setAttribute("aria-expanded", "false");  
+        menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';  
+    });  
+});
 
-.hero-visual {
-    position: relative;
-    display: grid;
-    place-items: center;
-    min-height: 340px;
 }
 
-.profile-ring {
-    width: 270px;
-    height: 270px;
-    display: grid;
-    place-items: center;
-    border-radius: 50%;
-    background: linear-gradient(135deg, var(--red), transparent 65%);
-    box-shadow: 0 0 55px var(--red-glow);
-    animation: float 4s ease-in-out infinite;
-}
+// ===== DARK / LIGHT THEME =====
 
-.profile-image {
-    width: 252px;
-    height: 252px;
-    overflow: hidden;
-    border: 5px solid var(--bg);
-    border-radius: 50%;
-    background: var(--surface-2);
-}
+const themeBtn = document.getElementById("themeBtn");
+const themeIcon = themeBtn?.querySelector("i");
 
-.profile-image img {
-    display: block;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+function applyTheme(isLight) {
+document.body.classList.toggle("light-theme", isLight);
 
-.profile-fallback {
-    width: 100%;
-    height: 100%;
-    display: none;
-    place-items: center;
-    color: var(--red);
-    font-size: 65px;
-    font-weight: 800;
-}
+if (themeIcon) {  
+    themeIcon.className = isLight  
+        ? "fa-solid fa-moon"  
+        : "fa-solid fa-sun";  
+}  
 
-.floating-tag {
-    position: absolute;
-    padding: 10px 15px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    box-shadow: 0 8px 30px #00000015;
-    font-size: 13px;
-    font-weight: 700;
-}
+if (themeBtn) {  
+    themeBtn.setAttribute(  
+        "aria-label",  
+        isLight ? "Switch to dark theme" : "Switch to light theme"  
+    );  
+}  
 
-.floating-tag i {
-    color: var(--red);
-    margin-right: 5px;
-}
+const themeColor = document.querySelector(  
+    'meta[name="theme-color"]'  
+);  
 
-.tag-top {
-    top: 40px;
-    right: 0;
+if (themeColor) {  
+    themeColor.setAttribute(  
+        "content",  
+        isLight ? "#f5f5f8" : "#09090d"  
+    );  
 }
 
-.tag-bottom {
-    bottom: 35px;
-    left: 0;
 }
 
-/* SECTIONS */
+let savedTheme = null;
 
-.section {
-    padding: 85px 8%;
-    text-align: center;
-    border-top: 1px solid var(--border);
-    scroll-margin-top: 75px;
+try {
+savedTheme = localStorage.getItem("nabil-theme");
+} catch (error) {
+// Theme switching still works if storage is unavailable.
 }
 
-.section-title {
-    margin-bottom: 18px;
-    font-size: clamp(30px, 4vw, 42px);
-    line-height: 1.25;
-}
+applyTheme(savedTheme === "light");
 
-.accent {
-    color: var(--red);
-}
+themeBtn?.addEventListener("click", () => {
+const isLight = !document.body.classList.contains("light-theme");
 
-.section-text {
-    max-width: 720px;
-    margin: 0 auto;
-    color: var(--muted);
-}
+applyTheme(isLight);  
 
-.about-pills {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 30px;
+try {  
+    localStorage.setItem("nabil-theme", isLight ? "light" : "dark");  
+} catch (error) {  
+    // The selected theme remains active until the page is refreshed.  
 }
 
-.about-pills span {
-    padding: 9px 14px;
-    color: var(--muted);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 30px;
-    font-size: 13px;
-}
+});
 
-.about-pills i {
-    color: var(--red);
-    margin-right: 5px;
-}
+// ===== ANIMATED TYPING =====
 
-/* SKILLS */
-
-.skills-grid,
-.projects-grid {
-    max-width: 1080px;
-    margin: 38px auto 0;
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 20px;
-    text-align: left;
-}
+const typedText = document.getElementById("typedText");
 
-.skill-card,
-.project-card {
-    min-width: 0;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    overflow: hidden;
-    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
+const roles = [
+"Web Development",
+"Networking",
+"Cybersecurity"
+];
 
-.skill-card {
-    padding: 25px;
-}
+let roleIndex = 0;
+let charIndex = 0;
+let deleting = false;
 
-.skill-card:hover,
-.project-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--red);
-    box-shadow: 0 10px 35px var(--red-glow);
-}
+function typeRole() {
+if (!typedText) return;
 
-.skill-icon {
-    width: 50px;
-    height: 50px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 17px;
-    color: var(--red);
-    background: var(--red-glow);
-    border-radius: 13px;
-    font-size: 25px;
-}
+const currentRole = roles[roleIndex];  
 
-.skill-card h3,
-.project-info h3 {
-    font-size: 19px;
-    margin-bottom: 8px;
-}
+if (deleting) {  
+    charIndex--;  
+} else {  
+    charIndex++;  
+}  
 
-.skill-card p,
-.project-info > p:not(.project-type) {
-    color: var(--muted);
-    font-size: 14px;
-}
+typedText.textContent = currentRole.substring(0, charIndex);  
 
-.skill-label {
-    display: inline-block;
-    margin-top: 17px;
-    color: var(--red);
-    font-size: 11px;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
+let delay = deleting ? 45 : 90;  
 
-/* PROJECTS */
-
-.project-visual {
-    height: 155px;
-    position: relative;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-}
+if (!deleting && charIndex === currentRole.length) {  
+    deleting = true;  
+    delay = 1300;  
+} else if (deleting && charIndex === 0) {  
+    deleting = false;  
+    roleIndex = (roleIndex + 1) % roles.length;  
+    delay = 350;  
+}  
 
-.project-visual > i {
-    font-size: 55px;
-    color: #ffffff;
-    filter: drop-shadow(0 0 15px #ffffff40);
-    transition: transform 0.3s;
-}
+setTimeout(typeRole, delay);
 
-.project-card:hover .project-visual > i {
-    transform: scale(1.12);
 }
 
-.project-visual > span {
-    position: absolute;
-    bottom: 12px;
-    left: 15px;
-    color: #ffffffc7;
-    font-size: 10px;
-    letter-spacing: 1.5px;
+if (typedText) {
+typeRole();
 }
 
-.visual-red {
-    background: linear-gradient(135deg, #48131d, #e63946);
-}
+// ===== REVEAL SECTIONS ON SCROLL =====
 
-.visual-purple {
-    background: linear-gradient(135deg, #271643, #7949a8);
-}
+const revealSections = document.querySelectorAll(".reveal");
 
-.visual-blue {
-    background: linear-gradient(135deg, #102e4c, #247eb0);
+if ("IntersectionObserver" in window) {
+const observer = new IntersectionObserver((entries) => {
+entries.forEach((entry) => {
+if (entry.isIntersecting) {
+entry.target.classList.add("visible");
+observer.unobserve(entry.target);
 }
+});
+}, {
+threshold: 0.08
+});
 
-.project-info {
-    padding: 22px;
-}
+revealSections.forEach((section) => observer.observe(section));
 
-.project-type {
-    color: var(--red);
-    font-size: 10px;
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    margin-bottom: 8px;
+} else {
+revealSections.forEach((section) => {
+section.classList.add("visible");
+});
 }
+/* ===== HAUNTED GHOST EFFECT ===== */
 
-.tech-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin: 17px 0;
-}
+(() => {
+if (document.querySelector(".ghost-layer")) return;
 
-.tech-tags span {
-    padding: 4px 9px;
-    background: var(--surface-2);
-    border: 1px solid var(--border);
-    border-radius: 5px;
-    color: var(--muted);
-    font-size: 11px;
-}
+const layer = document.createElement("div");  
+layer.className = "ghost-layer";  
+layer.setAttribute("aria-hidden", "true");  
+document.body.appendChild(layer);  
 
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 5px;
-    color: var(--red);
-    font-size: 13px;
-    font-weight: 700;
-}
+for (let i = 0; i < 4; i++) {  
+    const ghost = document.createElement("div");  
+    ghost.className = "ghost";  
 
-.project-link:hover {
-    text-decoration: underline;
-}
+    ghost.style.left = `${12 + i * 23}%`;  
+    ghost.style.top = `${25 + (i % 3) * 20}%`;  
+    ghost.style.animationDelay = `${i * -4.5}s`;  
+    ghost.style.animationDuration = `${17 + i * 3}s`;  
+    ghost.style.transform = `scale(${0.7 + i * 0.12})`;  
 
-.all-projects {
-    margin-top: 35px;
+    layer.appendChild(ghost);  
 }
 
-/* SOCIALS */
-
-.social-links {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 16px;
-    margin-top: 30px;
-}
+})();
 
-.social {
-    width: 56px;
-    height: 56px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: var(--text);
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    font-size: 24px;
-    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-}
+document.addEventListener("DOMContentLoaded", () => {
+  const aiBox = document.getElementById("ai-box");
+  const aiMessages = document.getElementById("ai-messages");
+  const aiInput = document.getElementById("ai-input");
+  const aiForm = document.getElementById("ai-form");
 
-.social:hover {
-    transform: translateY(-5px);
-    border-color: var(--red);
-    box-shadow: 0 0 23px var(--red-glow);
-}
+  const toggle = document.getElementById("ai-toggle");
+  const close = document.getElementById("ai-close");
+  const arabic = document.getElementById("ai-ar");
+  const english = document.getElementById("ai-en");
 
-.instagram:hover { color: #e1306c; }
-.x-twitter:hover { color: var(--text); }
-.github:hover { color: var(--muted); }
-.linkedin:hover { color: #0a66c2; }
-
-/* FOOTER */
-
-.footer {
-    padding: 30px 8%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 15px;
-    background: var(--surface);
-    border-top: 1px solid var(--border);
-}
+  let aiLanguage = "en";
 
-.footer p {
-    color: var(--muted);
-    font-size: 12px;
-}
+  if (!aiBox || !aiMessages || !aiInput || !aiForm) {
+    console.error("AI error: Check ai-box, ai-messages, ai-input and ai-form IDs.");
+    return;
+  }
 
-/* ANIMATIONS */
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      aiBox.hidden = !aiBox.hidden;
+      if (!aiBox.hidden) aiInput.focus();
+    });
+  }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity 0.65s ease, transform 0.65s ease;
-}
+  if (close) {
+    close.addEventListener("click", () => {
+      aiBox.hidden = true;
+    });
+  }
 
-.reveal.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
+  if (arabic) {
+    arabic.addEventListener("click", () => {
+      aiLanguage = "ar";
+      aiInput.placeholder = "اسأل عن نبيل أو التكنولوجيا...";
+    });
+  }
 
-@keyframes enter {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+  if (english) {
+    english.addEventListener("click", () => {
+      aiLanguage = "en";
+      aiInput.placeholder = "Ask about Nabil or technology...";
+    });
+  }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-9px); }
-}
+  function addAIMessage(text, type) {
+    const message = document.createElement("p");
+    message.className = type;
+    message.textContent = text;
+    aiMessages.appendChild(message);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
 
-@keyframes blink {
-    50% { opacity: 0; }
-}
+  function getAIAnswer(question) {
+    const q = question.toLowerCase();
 
-/* RESPONSIVE */
+    const includesAny = (words) =>
+      words.some(word => q.includes(word));
 
-@media (max-width: 950px) {
-    .hero {
-        gap: 35px;
-        padding-left: 6%;
-        padding-right: 6%;
+    if (includesAny(["hello", "hi", "salam", "سلام", "مرحبا", "bonjour"])) {
+      return aiLanguage === "ar"
+        ? "مرحباً بك! أنا AI / ST، مساعد موقع نبيل. كيف يمكنني مساعدتك؟"
+        : "Hello! Welcome to Nabil's website. How can I help you?";
     }
 
-    .skills-grid,
-    .projects-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-}
-
-@media (max-width: 700px) {
-    .navbar {
-        padding: 12px 5%;
-        flex-wrap: wrap;
+    if (includesAny(["project", "projet", "مشروع", "github"])) {
+      return aiLanguage === "ar"
+        ? "نبيل مهتم بالمشاريع التقنية. اكتشف أعماله على GitHub: https://github.com/elknabil795-ops"
+        : "Nabil is interested in technology projects. Explore his GitHub: https://github.com/elknabil795-ops";
     }
 
-    .menu-btn {
-        display: grid;
+    if (includesAny(["network", "شبكات", "الشبكات", "tcp/ip", "dns"])) {
+      return aiLanguage === "ar"
+        ? "الشبكات تربط الأجهزة لتبادل البيانات. تعلّم IP وDNS وDHCP وTCP/IP وLAN وWAN."
+        : "Networking connects devices to exchange data. Learn IP, DNS, DHCP, TCP/IP, LAN, and WAN.";
     }
 
-    .navbar nav {
-        width: 100%;
-        order: 3;
+    if (includesAny(["cyber", "hack", "security", "الأمن السيبراني", "الأمن"])) {
+      return aiLanguage === "ar"
+        ? "الأمن السيبراني يحمي الأنظمة والشبكات والبيانات. ابدأ بأساسيات الشبكات وLinux والتدريب القانوني."
+        : "Cybersecurity protects systems, networks, and data. Start with networking, Linux, and legal practice.";
     }
 
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-        padding: 8px 0;
+    if (includesAny(["program", "python", "javascript", "html", "css", "برمجة", "البرمجة"])) {
+      return aiLanguage === "ar"
+        ? "يمكنك تعلّم HTML وCSS وJavaScript لتطوير المواقع، أو Python لأساسيات البرمجة."
+        : "Learn HTML, CSS, and JavaScript for web development, or Python for programming fundamentals.";
     }
 
-    .nav-links.open {
-        display: flex;
+    if (includesAny(["robot", "روبوت", "الروبوتات"])) {
+      return aiLanguage === "ar"
+        ? "الروبوتات تجمع بين البرمجة والإلكترونيات وأجهزة الاستشعار."
+        : "Robotics combines programming, electronics, and sensors.";
     }
 
-    .nav-links a {
-        display: block;
-        padding: 10px 4px;
+    if (includesAny(["nabil", "نبيل", "about", "من أنت", "من هو"])) {
+      return aiLanguage === "ar"
+        ? "أنا AI / ST، مساعد موقع نبيل الكاملي من وجدة، المغرب. يهتم نبيل بالبرمجة والشبكات والأمن السيبراني والروبوتات."
+        : "I am AI / ST, the assistant for Nabil El Kamel's website. Nabil is from Oujda, Morocco, and is interested in programming, networking, cybersecurity, and robotics.";
     }
 
-    .hero {
-        min-height: auto;
-        padding: 65px 6% 75px;
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 45px;
-    }
+    return aiLanguage === "ar"
+      ? "جرّب تسولني على نبيل أو المشاريع أو البرمجة أو الشبكات أو الأمن السيبراني."
+      : "Ask me about Nabil, projects, programming, networking, or cybersecurity.";
+  }
 
-    .hero-content {
-        order: 2;
-    }
+  aiForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    .hero-visual {
-        order: 1;
-        min-height: 270px;
-    }
+    const question = aiInput.value.trim();
+    if (!question) return;
 
-    .profile-ring {
-        width: 220px;
-        height: 220px;
-    }
+    addAIMessage(question, "ai-user");
+    addAIMessage(getAIAnswer(question), "ai-bot");
 
-    .profile-image {
-        width: 204px;
-        height: 204px;
-    }
-
-    .hero-buttons,
-    .hero-socials {
-        justify-content: center;
-    }
-
-    .hero-description {
-        margin: auto;
-    }
-
-    .tag-top { right: 0; top: 12px; }
-    .tag-bottom { left: 0; bottom: 10px; }
-
-    .section {
-        padding: 65px 6%;
-    }
-
-    .skills-grid,
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .footer {
-        justify-content: center;
-        text-align: center;
-        flex-direction: column;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation: none !important;
-        scroll-behavior: auto !important;
-        transition: none !important;
-    }
-
-    .reveal {
-        opacity: 1;
-        transform: none;
-    }
-}
-
-
-/* Blood drip on click — no text */
-
-.blood-click {
-    position: relative;
-    overflow: visible !important;
-}
-
-.blood-drop {
-    position: absolute;
-    top: 95%;
-    left: var(--drop-position, 50%);
-    width: 6px;
-    height: 0;
-    background: linear-gradient(to bottom, #c00018, #650008);
-    border-radius: 0 0 50% 50%;
-    box-shadow: 0 0 6px rgba(180, 0, 20, 0.7);
-    pointer-events: none;
-    z-index: 9999;
-    animation: dripBlood 1.2s ease-in forwards;
-}
-
-@keyframes dripBlood {
-    0% {
-        height: 0;
-        opacity: 1;
-    }
-    70% {
-        height: 35px;
-        opacity: 1;
-    }
-    100% {
-        height: 45px;
-        opacity: 0;
-        transform: translateY(10px);
-    }
-}
-
-/* ===== REALISTIC DARK RED ATMOSPHERE ===== */
-
-body {
-    position: relative;
-    isolation: isolate;
-}
-
-body::before,
-body::after {
-    content: "";
-    position: fixed;
-    inset: -30%;
-    pointer-events: none;
-    z-index: 50;
-}
-
-body::before {
-    background:
-        radial-gradient(ellipse at 15% 75%,
-            rgba(100, 105, 115, 0.15), transparent 38%),
-        radial-gradient(ellipse at 85% 25%,
-            rgba(110, 0, 15, 0.12), transparent 35%);
-    filter: blur(35px);
-    animation: hauntedFog 18s ease-in-out infinite alternate;
-}
-
-body::after {
-    background:
-        radial-gradient(ellipse at 40% 100%,
-            rgba(180, 185, 195, 0.08), transparent 45%);
-    filter: blur(55px);
-    animation: hauntedFog 25s ease-in-out infinite alternate-reverse;
-}
-
-@keyframes hauntedFog {
-    from { transform: translate3d(-3%, 1%, 0) scale(1); }
-    to   { transform: translate3d(4%, -2%, 0) scale(1.08); }
-}
-
-/* Floating ghost silhouettes */
-
-.ghost-layer {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: 49;
-}
-
-.ghost {
-    position: absolute;
-    width: 65px;
-    height: 100px;
-    opacity: 0;
-    border-radius: 48% 48% 35% 35%;
-    background:
-        radial-gradient(ellipse at 50% 35%,
-            rgba(240, 243, 248, 0.22),
-            rgba(170, 177, 190, 0.09) 48%,
-            transparent 75%);
-    filter: blur(5px);
-    animation: ghostWander 18s linear infinite;
-}
-
-.ghost::before {
-    content: "";
-    position: absolute;
-    top: 30%;
-    left: 22%;
-    width: 56%;
-    height: 17%;
-    background:
-        radial-gradient(ellipse at 25% 50%,
-            rgba(15, 15, 20, 0.85) 0 12%,
-            transparent 17%),
-        radial-gradient(ellipse at 75% 50%,
-            rgba(15, 15, 20, 0.85) 0 12%,
-            transparent 17%);
-}
-
-.ghost::after {
-    content: "";
-    position: absolute;
-    left: 10%;
-    right: 10%;
-    bottom: -8px;
-    height: 25px;
-    background: radial-gradient(ellipse,
-        rgba(170, 175, 190, 0.12), transparent 70%);
-    filter: blur(8px);
-}
-
-@keyframes ghostWander {
-    0% {
-        transform: translate3d(0, 20px, 0) scale(.8);
-        opacity: 0;
-    }
-    15% { opacity: .45; }
-    50% {
-        transform: translate3d(65px, -35px, 0) scale(1.1);
-        opacity: .3;
-    }
-    85% { opacity: .4; }
-    100% {
-        transform: translate3d(-20px, -120px, 0) scale(.9);
-        opacity: 0;
-    }
-}
-
+    aiInput.value = "";
+    aiInput.focus();
+  });
+});
