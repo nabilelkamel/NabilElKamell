@@ -86,8 +86,8 @@ const typedText = document.getElementById("typedText");
 
 const roles = [
 "Web Development",
-"software development",
-"Networking"
+"Networking",
+"Cybersecurity"
 ];
 
 let roleIndex = 0;
@@ -174,101 +174,122 @@ for (let i = 0; i < 4; i++) {
 
 })();
 
-// ===== ST PERSONAL ASSISTANT =====
+document.addEventListener("DOMContentLoaded", () => {
+  const aiBox = document.getElementById("ai-box");
+  const aiMessages = document.getElementById("ai-messages");
+  const aiInput = document.getElementById("ai-input");
+  const aiForm = document.getElementById("ai-form");
 
-const chatToggle = document.getElementById("st-chat-toggle");
-const chatWindow = document.getElementById("st-chat-window");
-const chatClose = document.getElementById("st-chat-close");
-const chatForm = document.getElementById("st-chat-form");
-const chatInput = document.getElementById("st-chat-input");
-const chatMessages = document.getElementById("st-chat-messages");
+  const toggle = document.getElementById("ai-toggle");
+  const close = document.getElementById("ai-close");
+  const arabic = document.getElementById("ai-ar");
+  const english = document.getElementById("ai-en");
 
-chatToggle.addEventListener("click", () => {
-    chatWindow.hidden = !chatWindow.hidden;
-});
+  let aiLanguage = "en";
 
-chatClose.addEventListener("click", () => {
-    chatWindow.hidden = true; 
-});
+  if (!aiBox || !aiMessages || !aiInput || !aiForm) {
+    console.error("AI error: Check ai-box, ai-messages, ai-input and ai-form IDs.");
+    return;
+  }
 
-function addMessage(message, sender) {
-    const div = document.createElement("div");
-    div.className = "st-message " + sender;
-    div.textContent = message;
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+  if (toggle) {
+    toggle.addEventListener("click", () => {
+      aiBox.hidden = !aiBox.hidden;
+      if (!aiBox.hidden) aiInput.focus();
+    });
+  }
 
-function getSTAnswer(question) {
+  if (close) {
+    close.addEventListener("click", () => {
+      aiBox.hidden = true;
+    });
+  }
+
+  if (arabic) {
+    arabic.addEventListener("click", () => {
+      aiLanguage = "ar";
+      aiInput.placeholder = "اسأل عن نبيل أو التكنولوجيا...";
+    });
+  }
+
+  if (english) {
+    english.addEventListener("click", () => {
+      aiLanguage = "en";
+      aiInput.placeholder = "Ask about Nabil or technology...";
+    });
+  }
+
+  function addAIMessage(text, type) {
+    const message = document.createElement("p");
+    message.className = type;
+    message.textContent = text;
+    aiMessages.appendChild(message);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+
+  function getAIAnswer(question) {
     const q = question.toLowerCase();
 
-    if (/who is nabil|about nabil|tell me about nabil|?? ?? ????/.test(q)) {
-        return "Nabil El Kamel is a student from Oujda, Morocco, interested in technology, programming, networking and software development. He is continuously learning and building new projects.";
+    const includesAny = (words) =>
+      words.some(word => q.includes(word));
+
+    if (includesAny(["hello", "hi", "salam", "سلام", "مرحبا", "bonjour"])) {
+      return aiLanguage === "ar"
+        ? "مرحباً بك! أنا AI / ST، مساعد موقع نبيل. كيف يمكنني مساعدتك؟"
+        : "Hello! Welcome to Nabil's website. How can I help you?";
     }
 
-    if (/project|projects|work|portfolio|????????/.test(q)) {
-        return "Here are Nabil's projects:\n\n01. Personal Portfolio – A website presenting his profile and skills.\n\n02. Morocco Cancer Assist – A project concept focused on cancer information and support in Morocco.\n\n03. Python Experiments – Small Python coding exercises.\n\n04. Network Infrastructure Lab – Networking practice using Cisco Packet Tracer and Wireshark.";
+    if (includesAny(["project", "projet", "مشروع", "github"])) {
+      return aiLanguage === "ar"
+        ? "نبيل مهتم بالمشاريع التقنية. اكتشف أعماله على GitHub: https://github.com/elknabil795-ops"
+        : "Nabil is interested in technology projects. Explore his GitHub: https://github.com/elknabil795-ops";
     }
 
-    if (/skill|skills|technolog|??????/.test(q)) {
-        return "Nabil is developing skills in:\n\n• HTML, CSS and JavaScript\n• Python Programming\n• Computer Networking\n• Cisco Packet Tracer\n• Wireshark\n• Software Development\n\nHe is learning step by step.";
+    if (includesAny(["network", "شبكات", "الشبكات", "tcp/ip", "dns"])) {
+      return aiLanguage === "ar"
+        ? "الشبكات تربط الأجهزة لتبادل البيانات. تعلّم IP وDNS وDHCP وTCP/IP وLAN وWAN."
+        : "Networking connects devices to exchange data. Learn IP, DNS, DHCP, TCP/IP, LAN, and WAN.";
     }
 
-    if (/network|packet tracer|wireshark|?????/.test(q)) {
-        return "Nabil is learning computer networking, including IP addressing, routers, switches, TCP/IP and network troubleshooting. He practices using Cisco Packet Tracer and Wireshark.";
+    if (includesAny(["cyber", "hack", "security", "الأمن السيبراني", "الأمن"])) {
+      return aiLanguage === "ar"
+        ? "الأمن السيبراني يحمي الأنظمة والشبكات والبيانات. ابدأ بأساسيات الشبكات وLinux والتدريب القانوني."
+        : "Cybersecurity protects systems, networks, and data. Start with networking, Linux, and legal practice.";
     }
 
-    if (/web development|website|html|css|javascript/.test(q)) {
-        return "Nabil is learning Web Development using HTML, CSS and JavaScript. He works on personal websites and interactive web projects.";
+    if (includesAny(["program", "python", "javascript", "html", "css", "برمجة", "البرمجة"])) {
+      return aiLanguage === "ar"
+        ? "يمكنك تعلّم HTML وCSS وJavaScript لتطوير المواقع، أو Python لأساسيات البرمجة."
+        : "Learn HTML, CSS, and JavaScript for web development, or Python for programming fundamentals.";
     }
 
-    if (/python|programming|coding/.test(q)) {
-        return "Nabil is learning Python programming and developing small coding experiments to improve his programming skills.";
+    if (includesAny(["robot", "روبوت", "الروبوتات"])) {
+      return aiLanguage === "ar"
+        ? "الروبوتات تجمع بين البرمجة والإلكترونيات وأجهزة الاستشعار."
+        : "Robotics combines programming, electronics, and sensors.";
     }
 
-    if (/contact|github|instagram|linkedin|social|????/.test(q)) {
-        return "You can connect with Nabil through:\n\nGitHub: github.com/elknabil795-ops\n\nInstagram: @nabil__elk_\n\nLinkedIn: linkedin.com/in/nabil-el-kamel-16363b412/\n\nFeel free to explore his profiles!";
+    if (includesAny(["nabil", "نبيل", "about", "من أنت", "من هو"])) {
+      return aiLanguage === "ar"
+        ? "أنا AI / ST، مساعد موقع نبيل الكاملي من وجدة، المغرب. يهتم نبيل بالبرمجة والشبكات والأمن السيبراني والروبوتات."
+        : "I am AI / ST, the assistant for Nabil El Kamel's website. Nabil is from Oujda, Morocco, and is interested in programming, networking, cybersecurity, and robotics.";
     }
 
-    if (/morocco cancer|cancer assist/.test(q)) {
-        return "Morocco Cancer Assist is a web project concept focused on providing cancer-related information and support in Morocco. It uses HTML, CSS and JavaScript.";
-    }
+    return aiLanguage === "ar"
+      ? "جرّب تسولني على نبيل أو المشاريع أو البرمجة أو الشبكات أو الأمن السيبراني."
+      : "Ask me about Nabil, projects, programming, networking, or cybersecurity.";
+  }
 
-    if (/hello|hi|hey|salam|?????/.test(q)) {
-        return "Hello! Welcome to Nabil's Portfolio. ?? How can I help you?";
-    }
+  aiForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-    if (/thank|thanks|????/.test(q)) {
-        return "You're welcome! Thank you for visiting Nabil's Portfolio. ??";
-    }
-
-    return "Thanks for your question! I'm ST Assistant. I can explain Nabil's profile, projects, skills and contact information. Try asking about one of these topics.";
-}
-
-function sendSTMessage(message) {
-    const question = message.trim();
-
+    const question = aiInput.value.trim();
     if (!question) return;
 
-    addMessage(question, "user");
+    addAIMessage(question, "ai-user");
+    addAIMessage(getAIAnswer(question), "ai-bot");
 
-    const answer = getSTAnswer(question);
-
-    setTimeout(() => {
-        addMessage(answer, "bot");
-    }, 300);
-}
-
-chatForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    sendSTMessage(chatInput.value);
-    chatInput.value = "";
-});
-
-document.querySelectorAll(".st-chat-suggestions button")
-.forEach(button => {
-    button.addEventListener("click", () => {
-        sendSTMessage(button.dataset.question);
-    });
+    aiInput.value = "";
+    aiInput.focus();
+  });
 });
