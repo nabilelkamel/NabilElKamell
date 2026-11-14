@@ -4,13 +4,14 @@
 ## Project Screenshots
 
 ### 1. Personal Portfolio
-![Personal Portfolio](images/portfolio.jpg)
+![Personal Portfolio](portfolio.jpg)
 
 ### 2. Smart Office Network
-![Smart Office Network](images/network.jpg)
+![Smart Office Network](network.jpg)
 
 ### 3. Morocco Cancer Assist
-![Morocco Cancer Assist](images/cancer-assist.jpg)
+![Morocco Cancer Assist](cancer-assist.jpg)
 
 ### 4. ST Vision
-![ST Vision](images/st-vision.jpg)
+![ST Vision](st-vision.jpg)
+
