@@ -174,7 +174,8 @@ for (let i = 0; i < 4; i++) {
 
 })();
 
-/* CHATBOT FUNCTIONALITY */
+
+/* CHATBOT FUNCTIONALITY - ST PORTFOLIO */
 
 const chatbotWindow = document.getElementById("chatbotWindow");
 const chatbotToggle = document.getElementById("chatbotToggle");
@@ -182,10 +183,6 @@ const chatbotClose = document.getElementById("chatbotClose");
 const chatbotInput = document.getElementById("chatbotInput");
 const chatbotSend = document.getElementById("chatbotSend");
 const chatbotMessages = document.getElementById("chatbotMessages");
-
-const CHATBOT_API = "https://st-ai.elknabil795.workers.dev";
-
-let chatbotHistory = [];
 
 chatbotToggle.addEventListener("click", () => {
     chatbotWindow.classList.toggle("active");
@@ -202,19 +199,108 @@ function addChatMessage(message, type) {
     div.textContent = message;
     chatbotMessages.appendChild(div);
     chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    return div;
 }
 
-function showTyping() {
-    const div = document.createElement("div");
-    div.className = "bot-message typing";
-    div.innerHTML = "<span></span><span></span><span></span>";
-    chatbotMessages.appendChild(div);
-    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
-    return div;
+function getBotReply(message) {
+    const text = message.toLowerCase().trim();
+
+    // Greetings
+    if (/^(hi|hello|hey|salut|bonjour|salam|سلام|مرحبا)/i.test(text)) {
+        return "Hello! Welcome to Nabil El Kamel's portfolio. How can I help you?";
+    }
+
+    // Identity
+    if (text.includes("who is nabil") || text.includes("about nabil") ||
+        text.includes("من هو نبيل") || text.includes("nabil")) {
+        return "Nabil El Kamel is a technology enthusiast from Oujda, Morocco. He is a student interested in Web Development, Software Development and Networking.";
+    }
+
+    // Education
+    if (text.includes("study") || text.includes("school") ||
+        text.includes("education") || text.includes("يقرا") ||
+        text.includes("الدراسة")) {
+        return "Nabil is a high-school student in the Experimental Sciences track. He enjoys learning technology step by step.";
+    }
+
+    // Skills
+    if (text.includes("skill") || text.includes("technologies") ||
+        text.includes("مهارات")) {
+        return "Nabil is learning HTML, CSS, JavaScript, Python, Networking and computer technologies.";
+    }
+
+    // Web development
+    if (text.includes("web") || text.includes("website") ||
+        text.includes("مواقع")) {
+        return "Nabil is interested in Web Development and builds websites using HTML, CSS and JavaScript.";
+    }
+
+    // Networking
+    if (text.includes("network") || text.includes("شبكات")) {
+        return "Nabil is learning Networking using Cisco Packet Tracer and Wireshark. He is interested in IP addressing, routers, switches and network fundamentals.";
+    }
+
+    // Projects
+    if (text.includes("project") || text.includes("مشاريع")) {
+        return "Nabil's projects include:\n1. Personal Portfolio\n2. Smart Office Network\n3. Morocco Cancer Assist\n4. Python Experiments.";
+    }
+
+    // Portfolio
+    if (text.includes("portfolio")) {
+        return "This is Nabil El Kamel's personal portfolio, showcasing his interests, skills and technology projects.";
+    }
+
+    // Smart Office
+    if (text.includes("smart office")) {
+        return "Smart Office Network is a networking learning project focused on network design, routers, switches, IP addressing and connectivity.";
+    }
+
+    // Morocco Cancer Assist
+    if (text.includes("cancer") || text.includes("morocco cancer")) {
+        return "Morocco Cancer Assist is a project concept designed to provide information and support related to cancer in Morocco.";
+    }
+
+    // Python
+    if (text.includes("python")) {
+        return "Nabil uses Python for beginner programming experiments and learning.";
+    }
+
+    // Contact
+    if (text.includes("contact") || text.includes("email") ||
+        text.includes("تواصل") || text.includes("اتصال")) {
+        return "You can contact Nabil through his social profiles:\nGitHub: github.com/elknabil795-ops\nInstagram: @nabil__elk_\nLinkedIn: Nabil El Kamel.";
+    }
+
+    // GitHub
+    if (text.includes("github")) {
+        return "Visit Nabil's GitHub profile:\nhttps://github.com/elknabil795-ops";
+    }
+
+    // Instagram
+    if (text.includes("instagram")) {
+        return "Nabil's Instagram: @nabil__elk_";
+    }
+
+    // LinkedIn
+    if (text.includes("linkedin")) {
+        return "Find Nabil El Kamel on LinkedIn: https://www.linkedin.com/in/nabil-el-kamel-16363b412/";
+    }
+
+    // Location
+    if (text.includes("where") || text.includes("from") ||
+        text.includes("فين") || text.includes("منين")) {
+        return "Nabil is from Oujda, Morocco.";
+    }
+
+    // Thanks
+    if (text.includes("thank") || text.includes("شكرا")) {
+        return "You're welcome! Feel free to ask me anything about Nabil and his projects.";
+    }
+
+    // Default
+    return "I can help you learn about Nabil, his education, skills, projects and contact information. Try asking: Who is Nabil? What are his projects? How can I contact him?";
 }
 
-async function sendChatMessage() {
+function sendChatMessage() {
     const message = chatbotInput.value.trim();
 
     if (!message) return;
@@ -222,53 +308,23 @@ async function sendChatMessage() {
     chatbotInput.value = "";
     addChatMessage(message, "user");
 
-    const typing = showTyping();
     chatbotSend.disabled = true;
 
-    try {
-        const response = await fetch(CHATBOT_API, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                message: message,
-                history: chatbotHistory,
-                languageInstruction:
-                    "Reply in the same language as the user. " +
-                    "You can answer general questions and explain Nabil's portfolio."
-            })
-        });
+    const typing = document.createElement("div");
+    typing.className = "bot-message typing";
+    typing.innerHTML = "<span></span><span></span><span></span>";
+    chatbotMessages.appendChild(typing);
 
-        const data = await response.json();
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
 
+    setTimeout(() => {
         typing.remove();
+        const reply = getBotReply(message);
+        addChatMessage(reply, "bot");
 
-        if (!response.ok || !data.reply) {
-            throw new Error(data.error || "Chatbot request failed.");
-        }
-
-        addChatMessage(data.reply, "bot");
-
-        chatbotHistory.push(
-            { role: "user", parts: [{ text: message }] },
-            { role: "model", parts: [{ text: data.reply }] }
-        );
-
-        chatbotHistory = chatbotHistory.slice(-10);
-
-    } catch (error) {
-        typing.remove();
-        addChatMessage(
-            "Sorry, something went wrong. Please try again.",
-            "bot"
-        );
-        console.error("Chatbot error:", error);
-
-    } finally {
         chatbotSend.disabled = false;
         chatbotInput.focus();
-    }
+    }, 700);
 }
 
 chatbotSend.addEventListener("click", sendChatMessage);
