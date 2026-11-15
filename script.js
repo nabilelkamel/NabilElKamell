@@ -173,3 +173,108 @@ for (let i = 0; i < 4; i++) {
 }
 
 })();
+
+/* CHATBOT FUNCTIONALITY */
+
+const chatbotWindow = document.getElementById("chatbotWindow");
+const chatbotToggle = document.getElementById("chatbotToggle");
+const chatbotClose = document.getElementById("chatbotClose");
+const chatbotInput = document.getElementById("chatbotInput");
+const chatbotSend = document.getElementById("chatbotSend");
+const chatbotMessages = document.getElementById("chatbotMessages");
+
+const CHATBOT_API = "https://st-ai.elknabil795.workers.dev";
+
+let chatbotHistory = [];
+
+chatbotToggle.addEventListener("click", () => {
+    chatbotWindow.classList.toggle("active");
+    chatbotInput.focus();
+});
+
+chatbotClose.addEventListener("click", () => {
+    chatbotWindow.classList.remove("active");
+});
+
+function addChatMessage(message, type) {
+    const div = document.createElement("div");
+    div.className = type === "user" ? "user-message" : "bot-message";
+    div.textContent = message;
+    chatbotMessages.appendChild(div);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    return div;
+}
+
+function showTyping() {
+    const div = document.createElement("div");
+    div.className = "bot-message typing";
+    div.innerHTML = "<span></span><span></span><span></span>";
+    chatbotMessages.appendChild(div);
+    chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+    return div;
+}
+
+async function sendChatMessage() {
+    const message = chatbotInput.value.trim();
+
+    if (!message) return;
+
+    chatbotInput.value = "";
+    addChatMessage(message, "user");
+
+    const typing = showTyping();
+    chatbotSend.disabled = true;
+
+    try {
+        const response = await fetch(CHATBOT_API, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: message,
+                history: chatbotHistory,
+                languageInstruction:
+                    "Reply in the same language as the user. " +
+                    "You can answer general questions and explain Nabil's portfolio."
+            })
+        });
+
+        const data = await response.json();
+
+        typing.remove();
+
+        if (!response.ok || !data.reply) {
+            throw new Error(data.error || "Chatbot request failed.");
+        }
+
+        addChatMessage(data.reply, "bot");
+
+        chatbotHistory.push(
+            { role: "user", parts: [{ text: message }] },
+            { role: "model", parts: [{ text: data.reply }] }
+        );
+
+        chatbotHistory = chatbotHistory.slice(-10);
+
+    } catch (error) {
+        typing.remove();
+        addChatMessage(
+            "Sorry, something went wrong. Please try again.",
+            "bot"
+        );
+        console.error("Chatbot error:", error);
+
+    } finally {
+        chatbotSend.disabled = false;
+        chatbotInput.focus();
+    }
+}
+
+chatbotSend.addEventListener("click", sendChatMessage);
+
+chatbotInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+        sendChatMessage();
+    }
+});
