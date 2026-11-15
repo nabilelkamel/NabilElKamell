@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
-
+<title>Nabil El Kamel</title> <link rel="icon" type="image/png"href="logo.png"> </head>
 <body>
 <header class="navbar">
 
@@ -350,33 +350,42 @@ Thank you for visiting my website and being part of this journey! ❤️
         </div>
     </section>
 </main>
+<!-- CHATBOT -->
+<div class="chatbot-widget" id="chatbot">
+    <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open Chatbot">
+        <i class="fas fa-robot"></i>
+    </button>
 
-<!-- AI / ST Assistant -->
-<div id="ai-st">
-  <button id="ai-toggle" type="button">🤖 AI / ST</button>
+    <div class="chatbot-window" id="chatbotWindow">
+        <div class="chatbot-header">
+            <div class="chatbot-avatar">
+                <i class="fas fa-robot"></i>
+            </div>
+            <div>
+                <h3>Chatbot</h3>
+                <span>Online</span>
+            </div>
+            <button id="chatbotClose" aria-label="Close">×</button>
+        </div>
 
-  <div id="ai-box" hidden>
-    <div class="ai-header">
-      <strong>AI / ST</strong> 
-      Ai/St
-      <button id="ai-close" type="button">✕</button>
-    </div> dis wite closev
+        <div class="chatbot-messages" id="chatbotMessages">
+            <div class="bot-message">
+                Hello! How can I help you today?
+            </div>
+        </div>
 
-    <div id="ai-messages">
-      <p class="ai-bot">
-        Hello! I am AI / ST. Ask me about Nabil El Kamel.
-      </p>
+        <div class="chatbot-input-area">
+            <input id="chatbotInput" type="text"
+                placeholder="Type your message..." autocomplete="off">
+            <button id="chatbotSend" aria-label="Send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
     </div>
-
-
-    <form id="ai-form">
-      <input id="ai-input" placeholder="Ask about Nabil..." required>
-      <button type="submit">Send</button>
-    </form>
-  </div>
 </div>
-
-    <script src="script.js"></script>
+        </div>
+    </section>
+</main>
 </script>
     
 <footer class="footer">
