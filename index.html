@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head>                                                             
     <meta name="google-site-verification" content="LAKSvk_JpJnMbM8F0VMzO84_MuuijB6v0M3IZdkeegE" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,7 +15,13 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
+<head>
 
+<title>Nabil El Kamel</title>
+
+<link rel="icon" type="image/png" href="logo.png">
+
+</head> 
 <body>
 <header class="navbar">
 
@@ -351,29 +357,39 @@ Thank you for visiting my website and being part of this journey! ❤️
     </section>
 </main>
 
-<!-- AI / ST Assistant -->
-<div id="ai-st">
-  <button id="ai-toggle" type="button">🤖 AI / ST</button>
+<!-- AI CHATBOT -->
+<div class="chatbot">
+    <button class="chatbot-toggle" onclick="toggleChat()">
+        <i class="fa-solid fa-robot"></i>
+        AI / ST
+    </button>
 
-  <div id="ai-box" hidden>
-    <div class="ai-header">
-      <strong>AI / ST</strong> 
-      Ai/St
-      <button id="ai-close" type="button">✕</button>
-    </div> dis wite closev
+    <div class="chatbot-box" id="chatbotBox">
+        <div class="chatbot-header">
+            <div>
+                <h3>🤖 AI / ST</h3>
+                <small>● Online Assistant</small>
+            </div>
+            <button onclick="toggleChat()">×</button>
+        </div>
 
-    <div id="ai-messages">
-      <p class="ai-bot">
-        Hello! I am AI / ST. Ask me about Nabil El Kamel.
-      </p>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="bot-message">
+                Hello! I'm AI / ST.
+                How can I help you today?
+            </div>
+        </div>
+
+        <div class="chatbot-input">
+            <input type="text" id="chatInput"
+                   placeholder="Type your message..."
+                   onkeydown="if(event.key==='Enter') sendMessage()">
+
+            <button onclick="sendMessage()">
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+        </div>
     </div>
-
-
-    <form id="ai-form">
-      <input id="ai-input" placeholder="Ask about Nabil..." required>
-      <button type="submit">Send</button>
-    </form>
-  </div>
 </div>
 
     <script src="script.js"></script>
