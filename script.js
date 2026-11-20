@@ -171,7 +171,7 @@ for (let i = 0; i < 4; i++) {
 
     layer.appendChild(ghost);  
 }
-  
+
  /* Portfolio chatbot — Nabil El Kamel
    No API, no server: runs fully in the browser.
    Only answers questions about Nabil and this website. English only. */
