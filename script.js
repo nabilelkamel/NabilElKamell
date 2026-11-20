@@ -162,3 +162,33 @@ if (yearEl) {
         layer.appendChild(ghost);
     }
 })();
+// ===== CONTACT FORM =====
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const contactForm = document.getElementById("contactForm");
+
+    if (!contactForm) return;
+
+    contactForm.addEventListener("submit", (event) => {
+
+        event.preventDefault();
+
+        const recipient = "YOUR_EMAIL_HERE";
+
+        const name = document.getElementById("contactName").value.trim();
+        const email = document.getElementById("contactEmail").value.trim();
+        const subject = document.getElementById("contactSubject").value.trim();
+        const message = document.getElementById("contactMessage").value.trim();
+
+        const body =
+            `Name: ${name}\nEmail: ${email}\n\n${message}`;
+
+        const mailto =
+            `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        window.location.href = mailto;
+
+    });
+
+});
