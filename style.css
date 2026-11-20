@@ -1193,3 +1193,54 @@ body::after {
         font-size: 16px;
     }
 }
+/* CONTACT - SMALLER DESIGN */
+
+.contact-section {
+    padding: 55px 20px;
+}
+
+.contact-section .section-title {
+    margin-bottom: 25px;
+}
+
+.contact-layout {
+    max-width: 850px;
+    margin: 0 auto;
+    gap: 22px;
+}
+
+.contact-social-card,
+.contact-form-card {
+    padding: 20px;
+    border-radius: 14px;
+}
+
+.contact-social-row {
+    padding: 10px 12px;
+    gap: 10px;
+}
+
+.contact-form-card input,
+.contact-form-card textarea {
+    padding: 10px 12px;
+    font-size: 14px;
+}
+
+.contact-form-card textarea {
+    min-height: 100px;
+}
+
+.contact-form-card button {
+    padding: 10px 18px;
+    font-size: 14px;
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 40px 15px;
+    }
+
+    .contact-layout {
+        gap: 16px;
+    }
+}
