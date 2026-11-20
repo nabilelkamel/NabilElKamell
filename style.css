@@ -843,61 +843,71 @@ body::after {
         opacity: 0;
     }
 }
-/* ===== CONTACT SECTION REDESIGN ===== */
+
+/* ===== CONTACT SECTION - COMPACT DESIGN ===== */
 
 .contact-section {
     position: relative;
     overflow: hidden;
-    background: radial-gradient(
-        ellipse at 100% 0%,
-        var(--red-glow),
-        transparent 34%
-    ), var(--bg);
+    padding: 55px 20px;
+    background: radial-gradient(ellipse at 100% 0%, var(--red-glow), transparent 30%), var(--bg);
+}
+
+.contact-eyebrow {
+    letter-spacing: 2px;
+    font-size: 11px;
+}
+
+.contact-title {
+    font-size: 36px;
+    font-style: italic;
+    margin-bottom: 10px;
 }
 
 .contact-intro {
-    max-width: 760px;
-    margin-bottom: 48px;
-    font-size: 17px;
+    max-width: 500px;
+    margin: 0 auto 25px;
+    font-size: 13px;
+    line-height: 1.6;
 }
 
 .contact-layout {
     width: 100%;
-    max-width: 1240px;
+    max-width: 780px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: .82fr 1.18fr;
-    gap: 38px;
+    grid-template-columns: .9fr 1.1fr;
+    gap: 18px;
     text-align: left;
-    align-items: stretch;
+    align-items: start;
 }
 
 .contact-left {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 10px;
 }
 
 .contact-social-card,
 .contact-form-card {
-    background: var(--surface);
+    background: linear-gradient(145deg, var(--surface), color-mix(in srgb, var(--surface) 78%, #000 22%));
     border: 1px solid var(--border);
-    border-radius: 18px;
-    box-shadow: 0 15px 45px #00000018;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px #00000015;
 }
 
 .contact-social-card {
-    padding: 12px 25px;
+    padding: 7px 14px;
 }
 
 .contact-social-row {
-    min-height: 100px;
+    min-height: 65px;
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 11px;
     border-bottom: 1px solid var(--border);
-    transition: .25s ease;
+    transition: .2s ease;
 }
 
 .contact-social-row:last-child {
@@ -905,20 +915,19 @@ body::after {
 }
 
 .contact-social-row:hover {
-    transform: translateX(5px);
+    transform: translateX(3px);
 }
 
 .contact-social-icon {
-    flex: 0 0 68px;
-    width: 68px;
-    height: 68px;
+    flex: 0 0 39px;
+    width: 39px;
+    height: 39px;
     display: grid;
     place-items: center;
-    border: 1.5px solid var(--red);
+    border: 1px solid var(--red);
     border-radius: 50%;
     color: var(--red);
-    font-size: 31px;
-    box-shadow: 0 0 18px var(--red-glow);
+    font-size: 18px;
 }
 
 .contact-social-copy {
@@ -926,29 +935,29 @@ body::after {
     flex: 1;
     display: flex;
     flex-direction: column;
-    line-height: 1.45;
+    line-height: 1.4;
 }
 
 .contact-social-copy strong {
     color: var(--text);
-    font-size: 20px;
+    font-size: 14px;
 }
 
 .contact-social-copy small {
     color: var(--muted);
-    font-size: 14px;
+    font-size: 10px;
 }
 
 .contact-open {
-    flex: 0 0 54px;
-    width: 54px;
-    height: 54px;
+    flex: 0 0 30px;
+    width: 30px;
+    height: 30px;
     display: grid;
     place-items: center;
     border: 1px solid var(--border);
     border-radius: 50%;
     color: var(--text);
-    font-size: 20px;
+    font-size: 12px;
 }
 
 .contact-social-row:hover .contact-open {
@@ -959,104 +968,104 @@ body::after {
 .contact-details {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 8px;
 }
 
 .contact-detail-card {
     min-width: 0;
-    min-height: 88px;
+    min-height: 65px;
     display: flex;
     align-items: center;
-    gap: 13px;
-    padding: 14px 17px;
+    gap: 8px;
+    padding: 9px;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 15px;
-    transition: .25s ease;
+    border-radius: 10px;
+    transition: .2s ease;
 }
 
 .contact-detail-card:hover {
     border-color: var(--red);
-    transform: translateY(-3px);
+    transform: translateY(-2px);
 }
 
 .contact-detail-card > i {
     color: var(--red);
-    font-size: 27px;
+    font-size: 18px;
 }
 
 .contact-detail-card span {
     min-width: 0;
     display: flex;
     flex-direction: column;
-    line-height: 1.45;
+    line-height: 1.4;
 }
 
 .contact-detail-card strong {
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .contact-detail-card small {
     color: var(--muted);
-    font-size: 12px;
+    font-size: 9px;
     overflow-wrap: anywhere;
 }
 
 .contact-form-card {
-    padding: 28px 30px;
+    padding: 17px;
     border-color: var(--red);
-    box-shadow: 0 0 28px var(--red-glow);
+    box-shadow: 0 0 15px var(--red-glow);
 }
 
 .contact-form-card h3 {
     display: flex;
     align-items: center;
-    gap: 16px;
-    margin-bottom: 24px;
-    font-size: 25px;
+    gap: 9px;
+    margin-bottom: 15px;
+    font-size: 18px;
     font-style: italic;
 }
 
 .contact-form-card h3 i {
     color: var(--red);
-    font-size: 34px;
+    font-size: 21px;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 17px;
+    gap: 10px;
 }
 
 .contact-form-row {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 15px;
+    gap: 8px;
 }
 
 .contact-field {
     min-width: 0;
-    min-height: 61px;
+    min-height: 43px;
     display: flex;
     align-items: center;
-    gap: 14px;
-    padding: 0 17px;
+    gap: 8px;
+    padding: 0 10px;
     background: var(--surface-2);
     border: 1px solid var(--border);
-    border-radius: 13px;
+    border-radius: 8px;
     color: var(--muted);
-    transition: .2s;
+    transition: .2s ease;
 }
 
 .contact-field:focus-within {
     border-color: var(--red);
-    box-shadow: 0 0 0 3px var(--red-glow);
+    box-shadow: 0 0 0 2px var(--red-glow);
 }
 
 .contact-field > i {
     flex: 0 0 auto;
     color: var(--text);
-    font-size: 19px;
+    font-size: 13px;
 }
 
 .contact-field input,
@@ -1068,7 +1077,7 @@ body::after {
     background: transparent;
     color: var(--text);
     font: inherit;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .contact-field input::placeholder,
@@ -1078,169 +1087,115 @@ body::after {
 }
 
 .contact-message-field {
-    min-height: 132px;
+    min-height: 85px;
     align-items: flex-start;
-    padding-top: 17px;
+    padding-top: 11px;
 }
 
 .contact-message-field textarea {
-    min-height: 100px;
+    min-height: 65px;
     resize: vertical;
 }
 
 .contact-send-btn {
-    min-height: 62px;
+    min-height: 43px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 14px;
+    gap: 9px;
     border: 0;
-    border-radius: 13px;
+    border-radius: 8px;
     color: #fff;
     background: linear-gradient(100deg, #ff3b49, #b90e35);
     font: inherit;
-    font-size: 18px;
-    font-weight: 800;
+    font-size: 13px;
+    font-weight: 700;
     cursor: pointer;
-    box-shadow: 0 8px 22px var(--red-glow);
-    transition: .2s;
+    box-shadow: 0 5px 14px var(--red-glow);
+    transition: .2s ease;
 }
 
 .contact-send-btn:hover {
-    transform: translateY(-3px);
+    transform: translateY(-2px);
     filter: brightness(1.1);
 }
 
 .contact-send-btn i {
-    font-size: 21px;
+    font-size: 14px;
 }
 
 .contact-form-note {
     color: var(--muted);
-    font-size: 11px;
+    font-size: 9px;
     text-align: center;
-    margin-top: -8px;
+    margin-top: -3px;
 }
 
-/* RESPONSIVE */
+.contact-bottom-socials {
+    max-width: 400px;
+    margin: 22px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 17px;
+}
 
-@media (max-width: 900px) {
+.contact-bottom-socials a {
+    color: var(--text);
+    font-size: 19px;
+    transition: .2s;
+}
+
+.contact-bottom-socials a:hover {
+    color: var(--red);
+    transform: translateY(-2px);
+}
+
+.contact-bottom-socials span {
+    width: 1px;
+    height: 19px;
+    background: var(--muted);
+    opacity: .5;
+}
+
+/* TABLET AND MOBILE */
+
+@media (max-width: 700px) {
     .contact-layout {
         grid-template-columns: 1fr;
-        max-width: 680px;
+        max-width: 430px;
+    }
+
+    .contact-section {
+        padding: 40px 15px;
+    }
+
+    .contact-title {
+        font-size: 30px;
+    }
+
+    .contact-intro {
+        font-size: 12px;
+        margin-bottom: 20px;
     }
 }
 
-@media (max-width: 560px) {
-    .contact-intro {
-        font-size: 14px;
-        margin-bottom: 30px;
-    }
-
-    .contact-social-card {
-        padding: 8px 14px;
-    }
-
-    .contact-social-row {
-        min-height: 83px;
-        gap: 12px;
-    }
-
-    .contact-social-icon {
-        flex-basis: 52px;
-        width: 52px;
-        height: 52px;
-        font-size: 24px;
-    }
-
-    .contact-social-copy strong {
-        font-size: 16px;
-    }
-
-    .contact-social-copy small {
-        font-size: 12px;
-    }
-
-    .contact-open {
-        flex-basis: 40px;
-        width: 40px;
-        height: 40px;
-        font-size: 15px;
-    }
-
+@media (max-width: 420px) {
     .contact-details {
         grid-template-columns: 1fr;
-    }
-
-    .contact-form-card {
-        padding: 21px 16px;
-    }
-
-    .contact-form-card h3 {
-        font-size: 21px;
     }
 
     .contact-form-row {
         grid-template-columns: 1fr;
     }
 
-    .contact-field {
-        min-height: 56px;
+    .contact-social-row {
+        min-height: 58px;
     }
 
-    .contact-send-btn {
-        min-height: 56px;
-        font-size: 16px;
+    .contact-form-card {
+        padding: 14px;
     }
 }
-/* CONTACT - SMALLER DESIGN */
 
-.contact-section {
-    padding: 55px 20px;
-}
-
-.contact-section .section-title {
-    margin-bottom: 25px;
-}
-
-.contact-layout {
-    max-width: 850px;
-    margin: 0 auto;
-    gap: 22px;
-}
-
-.contact-social-card,
-.contact-form-card {
-    padding: 20px;
-    border-radius: 14px;
-}
-
-.contact-social-row {
-    padding: 10px 12px;
-    gap: 10px;
-}
-
-.contact-form-card input,
-.contact-form-card textarea {
-    padding: 10px 12px;
-    font-size: 14px;
-}
-
-.contact-form-card textarea {
-    min-height: 100px;
-}
-
-.contact-form-card button {
-    padding: 10px 18px;
-    font-size: 14px;
-}
-
-@media (max-width: 768px) {
-    .contact-section {
-        padding: 40px 15px;
-    }
-
-    .contact-layout {
-        gap: 16px;
-    }
 }
