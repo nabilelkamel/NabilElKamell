@@ -162,33 +162,19 @@ if (yearEl) {
         layer.appendChild(ghost);
     }
 })();
-// ===== CONTACT FORM =====
+const contactForm = document.getElementById("contact-form");
 
-document.addEventListener("DOMContentLoaded", () => {
+contactForm.addEventListener("submit", function (e) {
+    e.preventDefault();
 
-    const contactForm = document.getElementById("contactForm");
+    const name = contactForm.querySelector('input[type="text"]').value;
+    const email = contactForm.querySelector('input[type="email"]').value;
+    const subject = contactForm.querySelectorAll('input[type="text"]')[1].value;
+    const message = contactForm.querySelector("textarea").value;
 
-    if (!contactForm) return;
+    const mailto = `mailto:YOUR_EMAIL?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+        `Name: ${name}\nEmail: ${email}\n\n${message}`
+    )}`;
 
-    contactForm.addEventListener("submit", (event) => {
-
-        event.preventDefault();
-
-        const recipient = "YOUR_EMAIL_HERE";
-
-        const name = document.getElementById("contactName").value.trim();
-        const email = document.getElementById("contactEmail").value.trim();
-        const subject = document.getElementById("contactSubject").value.trim();
-        const message = document.getElementById("contactMessage").value.trim();
-
-        const body =
-            `Name: ${name}\nEmail: ${email}\n\n${message}`;
-
-        const mailto =
-            `mailto:${recipient}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-
-        window.location.href = mailto;
-
-    });
-
+    window.location.href = mailto;
 });
