@@ -953,3 +953,143 @@ body::after {
     }
 }
 
+/* CONTACT SECTION FIX */
+
+#contact {
+    padding: 65px 6% 45px;
+    text-align: center;
+    scroll-margin-top: 100px;
+}
+
+#contact .contact-container {
+    width: 100%;
+    max-width: 850px;
+    margin: 35px auto 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 35px;
+    align-items: center;
+}
+
+#contact .contact-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+}
+
+#contact .contact-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+}
+
+#contact .contact-box i {
+    color: var(--red);
+    font-size: 22px;
+}
+
+#contact .contact-box h3 {
+    font-size: 17px;
+    margin: 0;
+}
+
+#contact .contact-box p {
+    font-size: 14px;
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+#contact .social-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#contact .social {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+}
+
+#contact .contact-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+#contact .contact-form input,
+#contact .contact-form textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    margin: 0;
+    box-sizing: border-box;
+    background: #111116;
+    color: white;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    font: inherit;
+    font-size: 14px;
+}
+
+#contact .contact-form textarea {
+    min-height: 130px;
+    resize: vertical;
+}
+
+#contact .contact-form input:focus,
+#contact .contact-form textarea:focus {
+    border-color: var(--red);
+}
+
+#contact .contact-form button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background: var(--red);
+    color: white;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* MOBILE */
+@media (max-width: 650px) {
+    #contact {
+        padding: 55px 18px 40px;
+    }
+
+    #contact .contact-container {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 25px;
+    }
+
+    #contact .contact-details {
+        gap: 15px;
+    }
+
+    #contact .contact-box i {
+        font-size: 19px;
+    }
+
+    #contact .contact-box h3 {
+        font-size: 16px;
+    }
+
+    #contact .contact-box p {
+        font-size: 13px;
+    }
+
+    #contact .contact-form {
+        max-width: 100%;
+    }
+}
+
